@@ -11,10 +11,11 @@ class WebpackConfig {
     }
 
     options() {
-        const context = "./src/assets/scripts";
+        const context = `${this.root}/src/assets/scripts`;
 
         return {
-            entry: context + "/main.js",
+            context: context,
+            entry: "./main.js",
             output: {
                 path: context + "/bundle",
                 filename: "bundle.js"
@@ -42,6 +43,10 @@ class WebpackConfig {
         }, function(err, stats) {
             if (err) {
                 console.log(err);
+            }
+
+            if (stats.compilation.errors.length >= 1) {
+                console.log(stats.compilation.errors)
             }
         });
     }

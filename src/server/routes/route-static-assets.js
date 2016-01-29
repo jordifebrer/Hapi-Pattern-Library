@@ -11,7 +11,7 @@ class StaticRoute {
     }
 
     clientScript() {
-        const file = Path.join(this.root, "/src/scripts/client/bundle/bundle.js");
+        const file = Path.join(this.root, "/src/assets/scripts/bundle/bundle.js");
 
         this.server.route({
             method: "GET",
