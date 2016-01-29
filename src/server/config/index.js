@@ -1,7 +1,8 @@
 "use strict";
 
 class Config {
-    constructor(root) {
+    constructor(root, emitter) {
+        this.emitter = emitter;
         this.root = root;
 
         this.init();
@@ -12,7 +13,7 @@ class Config {
     }
 
     patternLibraryConfig() {
-        this.patternLibrary = require('./pattern-library')(this.root);
+        this.patternLibrary = require('./pattern-library')(this.root, this.emitter);
     }
 
     init() {
@@ -22,5 +23,5 @@ class Config {
     }
 }
 
-module.exports = root =>
-    new Config(root);
+module.exports = (root, emitter) =>
+    new Config(root, emitter);

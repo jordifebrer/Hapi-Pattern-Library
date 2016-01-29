@@ -5,12 +5,14 @@ const Hoek = require("hoek");
 const Inert = require("inert");
 const Vision = require("vision");
 const Handlebars = require("handlebars");
-const server = new Hapi.Server();
+const Events = require("events");
+const EventEmitter = new Events.EventEmitter();
 
 
 class Server {
     constructor(root) {
-        this.config = require("./config")(root);
+        this.config = require("./config")(root, EventEmitter);
+		this.server = new Hapi.Server();
 
         this.root = root;
 
@@ -26,22 +28,22 @@ class Server {
 
 
         return {
-            patterns: patterns,
+            components: components,
             templates: templates,
-            components: components
+            patterns: patterns
         };
     }
 
     setUp() {
-        server.connection({
+        this.server.connection({
             port: this.port
         });
 
-        server.register([Inert, Vision], err => {
+        this.server.register([Inert, Vision], err => {
 
             Hoek.assert(!err, err);
 
-            server.views({
+            this.server.views({
                 engines: {
                     html: Handlebars
                 },
@@ -50,22 +52,20 @@ class Server {
                 relativeTo: this.root,
                 layoutPath: "./src/views/layouts",
                 helpersPath: "./src/views/helpers",
-                partialsPath: "./src/views/partials",
-                context: this.data()
+                partialsPath: "./src/views/partials"
             });
-
         });
     }
 
     routes() {
         require("./routes/routes")(
-            this.root, server, this.data()
+            this.root, this.server, this.data(), EventEmitter
         );
     }
 
     start() {
-        server.start(() => {
-            console.log(`Server running at: ${server.info.uri}`);
+        this.server.start(() => {
+            console.log(`Server running at: ${this.server.info.uri}`);
         });
     }
 
