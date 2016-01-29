@@ -1,0 +1,29 @@
+<nav>
+    {{#if components}}
+    <h4>Components</h4>
+    <ul>
+        {{#each components}}
+
+        <li>{{this.name}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    {{#if templates}}
+    <h4>Templates</h4>
+    <ul>
+        {{#each templates}}
+        <li>{{this.name}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    {{#if patterns}}
+    <h4>Patterns</h4>
+    <ul>
+        {{#each patterns}}
+        <li>{{this.name}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+</nav>
