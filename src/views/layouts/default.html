@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+    </script>
 </head>
 
 <body>
-{{{content}}}
+    {{{content}}}
 
-<script src="/scripts/bundle"></script>
+    <script src="/scripts/bundle"></script>
 </body>
 
 </html>

@@ -8,11 +8,10 @@ const Handlebars = require("handlebars");
 const Events = require("events");
 const EventEmitter = new Events.EventEmitter();
 
-
 class Server {
     constructor(root) {
-        this.config = require("./config")(root, EventEmitter);
-		this.server = new Hapi.Server();
+        this.emitter = EventEmitter;
+        this.server = new Hapi.Server();
 
         this.root = root;
 
@@ -22,10 +21,10 @@ class Server {
     }
 
     data() {
-        const components = this.config.patternLibrary.components;
-        const templates = this.config.patternLibrary.templates;
-        const patterns = this.config.patternLibrary.patterns;
-
+        const config = this.config();
+        const components = config.patternLibrary.components;
+        const templates = config.patternLibrary.templates;
+        const patterns = config.patternLibrary.patterns;
 
         return {
             components: components,
@@ -35,8 +34,17 @@ class Server {
     }
 
     setUp() {
+        const _this = this;
         this.server.connection({
             port: this.port
+        });
+
+        const io = require('socket.io')(_this.server.listener);
+
+        io.on('connection', socket => {
+            _this.emitter.on('change', data => {
+                socket.emit('update', data);
+            });
         });
 
         this.server.register([Inert, Vision], err => {
@@ -57,9 +65,13 @@ class Server {
         });
     }
 
+    config() {
+        return require("./config")(this.root, this.emitter);
+    }
+
     routes() {
         require("./routes/routes")(
-            this.root, this.server, this.data(), EventEmitter
+            this.root, this.server, this.data(), this.emitter
         );
     }
 

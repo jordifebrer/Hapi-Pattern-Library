@@ -46,7 +46,7 @@ class PatternLibrary {
 
             _this.library();
 
-            _this.emitter.emit('fileChange', {
+            _this.emitter.emit('change', {
                 components: _this.components,
                 templates: _this.templates,
                 patterns: _this.patterns

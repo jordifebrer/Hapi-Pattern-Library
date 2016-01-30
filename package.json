@@ -18,6 +18,7 @@
     "hapi": "^12.1.0",
     "hoek": "^3.0.4",
     "inert": "^3.2.0",
+    "socket.io": "^1.4.5",
     "vision": "^4.0.1"
   },
   "devDependencies": {

@@ -16,7 +16,7 @@ class StaticRoute {
         this.server.route({
             method: "GET",
             path: "/scripts/bundle",
-            handler: function (request, reply) {
+            handler: function(request, reply) {
                 reply.file(file);
             }
         });

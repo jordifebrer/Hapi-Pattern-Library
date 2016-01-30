@@ -1,6 +1,5 @@
 "use strict";
 
-const Path = require("path");
 const Webpack = require("webpack");
 
 class WebpackConfig {

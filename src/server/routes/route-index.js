@@ -1,23 +1,33 @@
 "use strict";
 
 class IndexRoute {
-    constructor(server, data) {
+    constructor(server, data, emitter) {
         this.data = data;
         this.server = server;
+        this.emitter = emitter;
 
         this.path = "/";
 
         this.init();
     }
 
+    getData() {
+        const _this = this;
+        this.emitter.on('change', data => {
+            _this.data = data;
+        });
+
+        return this.data;
+    }
+
     get() {
+        const _this = this;
+
         return {
             method: "GET",
             path: this.path,
-            handler: {
-                view: {
-                    template: "index"
-                }
+            handler: function(request, reply) {
+                reply.view('index', _this.getData());
             }
         };
     }
@@ -32,5 +42,5 @@ class IndexRoute {
 }
 
 
-module.exports = (server, data) =>
-    new IndexRoute(server, data);
+module.exports = (server, data, emitter) =>
+    new IndexRoute(server, data, emitter);
