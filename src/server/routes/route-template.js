@@ -1,34 +1,34 @@
 "use strict";
 
 class TemplateRoute {
-    constructor(server, data) {
-        this.data = data;
-        this.server = server;
+  constructor(server, data) {
+    this.data = data;
+    this.server = server;
 
-        this.path = "/template/{name}";
+    this.path = "/template/{name}";
 
-        this.init();
-    }
+    this.init();
+  }
 
-    get() {
-        return {
-            method: "GET",
-            path: this.path,
-            handler: function (request, reply) {
-                reply("Hello World");
-            }
-        };
-    }
+  get() {
+    return {
+      method: "GET",
+      path: this.path,
+      handler: function(request, reply) {
+        reply("Hello World");
+      }
+    };
+  }
 
-    init() {
-        this.server.route(
-            [
-                this.get()
-            ]
-        );
-    }
+  init() {
+    this.server.route(
+      [
+        this.get()
+      ]
+    );
+  }
 }
 
 
 module.exports = (server, data) =>
-    new TemplateRoute(server, data);
+  new TemplateRoute(server, data);

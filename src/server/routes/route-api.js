@@ -1,48 +1,48 @@
 "use strict";
 
 class APIRoute {
-    constructor(server, data, emitter) {
-        this.data = data;
-        this.server = server;
-        this.emitter = emitter;
+  constructor(server, data, emitter) {
+    this.data = data;
+    this.server = server;
+    this.emitter = emitter;
 
-        this.path = "/api";
+    this.path = "/api";
 
-        this.init();
-    }
+    this.init();
+  }
 
-    getData() {
-        const _this = this;
-        this.emitter.on('fileChange', data => {
-            _this.data = data;
-        });
+  getData() {
+    const _this = this;
+    this.emitter.on('fileChange', data => {
+      _this.data = data;
+    });
 
-        return this.data;
-    }
+    return this.data;
+  }
 
-    get() {
-        const _this = this;
+  get() {
+    const _this = this;
 
-        return {
-            method: "GET",
-            path: this.path,
-            handler: function(request, reply) {
-                const data = _this.getData();
+    return {
+      method: "GET",
+      path: this.path,
+      handler: function(request, reply) {
+        const data = _this.getData();
 
-                reply(data);
-            }
-        };
-    }
+        reply(data);
+      }
+    };
+  }
 
-    init() {
-        this.server.route(
-            [
-                this.get()
-            ]
-        );
-    }
+  init() {
+    this.server.route(
+      [
+        this.get()
+      ]
+    );
+  }
 }
 
 
 module.exports = (server, data, emitter) =>
-    new APIRoute(server, data, emitter);
+  new APIRoute(server, data, emitter);

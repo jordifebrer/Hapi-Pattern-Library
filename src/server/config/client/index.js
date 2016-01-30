@@ -1,20 +1,20 @@
 "use strict";
 
 class Client {
-    constructor(root) {
-        this.root = root;
+  constructor(root) {
+    this.root = root;
 
-        this.init();
-    }
+    this.init();
+  }
 
-    webpack() {
-        require('./webpack')(this.root);
-    }
+  webpack() {
+    require('./webpack')(this.root);
+  }
 
-    init() {
-        this.webpack();
-    }
+  init() {
+    this.webpack();
+  }
 }
 
 module.exports = root =>
-    new Client(root);
+  new Client(root);

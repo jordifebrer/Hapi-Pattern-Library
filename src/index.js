@@ -1,20 +1,20 @@
 "use strict";
 
 class Main {
-    constructor(root) {
-        this.root = root;
+  constructor(root) {
+    this.root = root;
 
-        this.init();
-    }
+    this.init();
+  }
 
-    server() {
-        require("./server")(this.root);
-    }
+  server() {
+    require("./server")(this.root);
+  }
 
-    init() {
-        this.server();
-    }
+  init() {
+    this.server();
+  }
 }
 
 module.exports = _ =>
-    new Main(_);
+  new Main(_);
