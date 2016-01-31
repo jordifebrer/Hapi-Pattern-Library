@@ -27,7 +27,11 @@ class IndexRoute {
       method: "GET",
       path: this.path,
       handler: function(request, reply) {
-        reply.view('index', _this.getData());
+        reply.view('index', {
+          context: _this.getData(),
+          script: ['/scripts/bundle'],
+          style: ['/styles/main.css']
+        });
       }
     };
   }

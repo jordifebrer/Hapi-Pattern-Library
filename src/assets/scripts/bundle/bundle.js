@@ -50,11 +50,59 @@
 
 /***/ },
 /* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(2);
+
+/***/ },
+/* 2 */
 /***/ function(module, exports) {
 
 	"use strict";
 
-	console.log("Hello World");
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Iframe = function () {
+	  function Iframe() {
+	    _classCallCheck(this, Iframe);
+
+	    if (document.querySelectorAll('iframe').length >= 1) {
+	      this.init();
+	    }
+	  }
+
+	  _createClass(Iframe, [{
+	    key: 'socket',
+	    value: function socket() {
+	      var iframes = this.iframes;
+
+	      var reload = function reload(x) {
+	        return x.contentWindow.location.reload();
+	      };
+
+	      Array.prototype.forEach.call(iframes, function (el) {
+	        window.socket.on('update', function () {
+	          reload(el);
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'init',
+	    value: function init() {
+	      this.iframes = document.querySelectorAll('iframe');
+
+	      this.socket();
+	    }
+	  }]);
+
+	  return Iframe;
+	}();
+
+	module.exports = new Iframe();
 
 /***/ }
 /******/ ]);

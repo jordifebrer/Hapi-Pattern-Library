@@ -2,11 +2,11 @@
 
 {{!-- Side Nav --}}
 
-{{> sideNav}}
+{{> sideNav context}}
 
 {{!-- Component Iframes --}}
 
-{{#each components}}
+{{#each context.components}}
   <h2>{{this.name}}</h2>
   
   {{> iframe}}

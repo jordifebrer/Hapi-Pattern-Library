@@ -1,12 +1,12 @@
 "use strict";
 
-class TemplateRoute {
+class PatternRoute {
   constructor(server, data, emitter) {
     this.emitter = emitter;
     this.data = data;
     this.server = server;
 
-    this.path = "/template/{name}";
+    this.path = "/pattern/{name}";
 
     this.init();
   }
@@ -19,7 +19,7 @@ class TemplateRoute {
       _this.data = data;
     });
 
-    return _this.data.templates.filter(x => x.name === name)[0];
+    return _this.data.patterns.filter(x => x.name === name)[0];
   }
 
   get() {
@@ -29,7 +29,8 @@ class TemplateRoute {
       method: "GET",
       path: this.path,
       handler: function(request, reply) {
-        reply.view('template', {
+
+        reply.view('pattern', {
           component: _this.getData(request),
           style: [],
           script: []
@@ -49,4 +50,4 @@ class TemplateRoute {
 
 
 module.exports = (server, data, emitter) =>
-  new TemplateRoute(server, data, emitter);
+  new PatternRoute(server, data, emitter);

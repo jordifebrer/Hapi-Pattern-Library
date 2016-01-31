@@ -15,6 +15,7 @@ class Routes {
       "./route-index.js",
       "./route-api.js",
       "./route-template.js",
+      "./route-pattern.js",
       "./route-component.js"
     ];
   }
