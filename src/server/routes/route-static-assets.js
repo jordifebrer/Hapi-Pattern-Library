@@ -10,7 +10,7 @@ class StaticRoute {
     this.init();
   }
 
-  clientScript() {
+  clientScripts() {
     const file = Path.join(this.root, "/src/assets/scripts/bundle/bundle.js");
 
     this.server.route({
@@ -23,7 +23,7 @@ class StaticRoute {
   }
 
   init() {
-    this.clientScript();
+    this.clientScripts();
   }
 }
 

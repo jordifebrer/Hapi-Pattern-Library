@@ -11,11 +11,16 @@ class ComponentRoute {
   }
 
   get() {
+    const _this = this;
+
     return {
       method: "GET",
       path: this.path,
       handler: function(request, reply) {
-        reply("Hello World");
+        let name = encodeURIComponent(request.params.name);
+        let component = _this.data.components.filter(x => x.name === name)[0];
+
+        reply(component.markup);
       }
     };
   }

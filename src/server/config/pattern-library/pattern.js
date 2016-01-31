@@ -24,7 +24,7 @@ class PatternConfig {
 
     return {
       html: currentDir + pattern
-    }
+    };
   }
 
   data() {
@@ -38,7 +38,7 @@ class PatternConfig {
 
       currentPattern.id = index;
       currentPattern.name = pattern.split(".")[0];
-      currentPattern.html = fs.readFileSync(files.html, "utf8");
+      currentPattern.markup = fs.readFileSync(files.html, "utf8");
 
       currentPattern.file = files.html;
 

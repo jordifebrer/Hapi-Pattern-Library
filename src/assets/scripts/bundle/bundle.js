@@ -42,11 +42,19 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	console.log('Hi from client scripts');
+	__webpack_require__(1);
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	console.log("Hello World");
 
 /***/ }
 /******/ ]);

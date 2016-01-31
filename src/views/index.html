@@ -1,2 +1,13 @@
 <a href="/api">API</a>
+
+{{!-- Side Nav --}}
+
 {{> sideNav}}
+
+{{!-- Component Iframes --}}
+
+{{#each components}}
+  <h2>{{this.name}}</h2>
+  
+  {{> iframe}}
+{{/each}}

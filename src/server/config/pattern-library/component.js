@@ -28,7 +28,7 @@ class ComponentConfig {
       styles: currentDir + "/styles/main.less",
       scripts: currentDir + "/scripts/main.js",
       context: currentDir + "/context.json"
-    }
+    };
   }
 
   catcher(file, json) {
@@ -55,7 +55,7 @@ class ComponentConfig {
       currentComponent.id = index;
       currentComponent.name = component;
       currentComponent.docs = _this.catcher(files.docs, false);
-      currentComponent.html = _this.catcher(files.html, false);
+      currentComponent.markup = _this.catcher(files.html, false);
       currentComponent.styles = _this.catcher(files.styles, false);
       currentComponent.scripts = _this.catcher(files.scripts, false);
       currentComponent.context = _this.catcher(files.context, true);

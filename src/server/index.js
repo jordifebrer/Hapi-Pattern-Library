@@ -5,8 +5,10 @@ const Hoek = require("hoek");
 const Inert = require("inert");
 const Vision = require("vision");
 const Handlebars = require("handlebars");
+const HapiSass = require("hapi-sass");
 const Events = require("events");
 const EventEmitter = new Events.EventEmitter();
+
 
 class Server {
   constructor(root) {
@@ -47,7 +49,24 @@ class Server {
       });
     });
 
-    this.server.register([Inert, Vision], err => {
+    const sassOptions = {
+      src: this.root + '/src/assets/styles/',
+      dest: this.root + '/src/assets/styles/',
+      force: true,
+      debug: false,
+      routePath: '/styles/{file}.css',
+      includePaths: [
+        this.root + '/src/assets/styles/',
+        this.root + '/node_modules/bulma/'
+      ],
+      outputStyle: 'compressed',
+      sourceComments: true
+    };
+
+    this.server.register([Inert, Vision, {
+      register: HapiSass,
+      options: sassOptions
+    }], err => {
 
       Hoek.assert(!err, err);
 
@@ -70,7 +89,7 @@ class Server {
   }
 
   routes() {
-    require("./routes/routes")(
+    require("./routes")(
       this.root, this.server, this.data(), this.emitter
     );
   }

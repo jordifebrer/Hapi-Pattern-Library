@@ -25,7 +25,7 @@ class TemplateConfig {
     return {
       html: currentDir + "/index.html",
       context: currentDir + "/context.json"
-    }
+    };
   }
 
   catcher(file, json) {
@@ -51,7 +51,7 @@ class TemplateConfig {
 
       currentTemplate.id = index;
       currentTemplate.name = template;
-      currentTemplate.html = _this.catcher(files.html, false);
+      currentTemplate.markup = _this.catcher(files.html, false);
       currentTemplate.context = _this.catcher(files.context, true);
 
       currentTemplate.files = files;

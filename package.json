@@ -16,6 +16,7 @@
     "chokidar": "^1.4.2",
     "handlebars": "^4.0.5",
     "hapi": "^12.1.0",
+    "hapi-sass": "^2.0.0",
     "hoek": "^3.0.4",
     "inert": "^3.2.0",
     "socket.io": "^1.4.5",

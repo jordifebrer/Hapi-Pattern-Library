@@ -1,1 +1,1 @@
- console.log('Hi from client scripts');
+require('./app');
