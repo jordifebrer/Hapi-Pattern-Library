@@ -1,5 +1,9 @@
 <a href="/api">API</a>
 
+<div id="react-root">
+  {{{react}}}
+</div>
+
 {{!-- Side Nav --}}
 
 {{> sideNav context}}
@@ -11,3 +15,8 @@
   
   {{> iframe}}
 {{/each}}
+
+
+<script>
+  var reactClient = {{reactClient}};
+</script>
