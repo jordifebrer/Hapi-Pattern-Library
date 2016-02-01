@@ -56,8 +56,7 @@ class Server {
       debug: false,
       routePath: '/styles/{file}.css',
       includePaths: [
-        this.root + '/src/assets/styles/',
-        this.root + '/node_modules/bulma/'
+        this.root + '/src/assets/styles/'
       ],
       outputStyle: 'compressed',
       sourceComments: true
