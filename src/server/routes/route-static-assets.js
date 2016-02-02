@@ -11,14 +11,27 @@ class StaticRoute {
   }
 
   clientScripts() {
-    const file = Path.join(this.root, "/src/assets/scripts/bundle/bundle.js");
-
-    this.server.route({
-      method: "GET",
-      path: "/scripts/bundle",
-      handler: function(request, reply) {
-        reply.file(file);
+    const root = this.root;
+    const server = this.server;
+    const files = [
+      {
+        src: "/src/assets/scripts/bundle/bundle.js",
+        url: "/scripts/bundle"
+      },
+      {
+        src: "/node_modules/jquery/dist/jquery.min.js",
+        url: "/scripts/jquery"
       }
+    ];
+
+    files.map(file => {
+      server.route({
+        method: "GET",
+        path: file.url,
+        handler: function (request, reply) {
+          reply.file(Path.join(root, file.src));
+        }
+      });
     });
   }
 

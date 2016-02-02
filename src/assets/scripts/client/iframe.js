@@ -2,7 +2,7 @@
 
 class Iframe {
   constructor() {
-    if (document.querySelectorAll('iframe').length >= 1) {
+    if ($('iframe').length) {
       this.init();
     }
   }
@@ -10,18 +10,17 @@ class Iframe {
   socket() {
     const iframes = this.iframes;
 
-    const reload = x =>
-      x.contentWindow.location.reload();
-
-    Array.prototype.forEach.call(iframes, el => {
-      window.socket.on('update', () => {
-        reload(el);
+    window.socket.on('update', data => {
+      $.each(iframes, function(index, el) {
+        if (el.name === data.file) {
+          $(el).attr('src', $(el).attr('src'));
+        }
       });
     });
   }
 
   init() {
-    this.iframes = document.querySelectorAll('iframe');
+    this.iframes = $('iframe');
 
     this.socket();
   }

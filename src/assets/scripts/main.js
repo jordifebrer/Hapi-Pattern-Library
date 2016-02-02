@@ -1,4 +1,3 @@
-require('jquery');
 require('bootstrap');
 require('./client');
 
@@ -8,7 +7,5 @@ if (document.getElementById('react-root')) {
   const App = require('./flux');
 
 
-  ReactDOM.render(
-    <App components={window.reactClient} />,
-    document.getElementById('react-root'));
+  ReactDOM.render(<App components={window.reactClient} />,document.getElementById('react-root'));
 }

@@ -46,10 +46,18 @@ class PatternLibrary {
 
       _this.library();
 
+      const getName = pathToFile => {
+        const arr = pathToFile.split('/');
+        
+        return arr[arr.length - 2];
+      };
+
+
       _this.emitter.emit('change', {
         components: _this.components,
         templates: _this.templates,
-        patterns: _this.patterns
+        patterns: _this.patterns,
+        file: getName(path)
       });
     };
 

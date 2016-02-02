@@ -31,12 +31,11 @@ class Routes {
     const root = this.root;
     const server = this.server;
     const emitter = this.emitter;
-
-    this.routes()
-      .forEach(route => require(route)(server, data, emitter));
-
+    
     this.staticRoutes()
       .forEach(route => require(route)(server, root));
+    this.routes()
+      .forEach(route => require(route)(server, data, emitter));
   }
 }
 

@@ -39,7 +39,7 @@ class IndexRoute {
           context: _this.getData(),
           reactClient: components,
           react: ReactDom.renderToString(App({components: components})),
-          script: ['/scripts/bundle'],
+          script: ['/scripts/jquery', '/scripts/bundle'],
           style: ['/styles/main.css']
         });
       }
