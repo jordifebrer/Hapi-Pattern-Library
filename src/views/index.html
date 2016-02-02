@@ -1,16 +1,18 @@
-<a href="/api">API</a>
+<div class="container">
 
-{{!-- Side Nav --}}
+  <div class="row row-offcanvas row-offcanvas-right">
 
-{{> sideNav context}}
+    <div class="col-md-9 col-sm-12" id="react-root" role="main">
+      {{{react}}}
+    </div>
 
+    <div class="col-md-3 col-sm-6 sidebar-offcanvas" id="sidebar" role="complementary">
+      <a href="/api">API</a>
+      {{> sideNav context}}
+    </div>
+  </div>
 
-{{!-- Component Views --}}
-
-<div id="react-root">
-  {{{react}}}
 </div>
-
 
 {{!-- Data for react if Server render fails --}}
 <script>

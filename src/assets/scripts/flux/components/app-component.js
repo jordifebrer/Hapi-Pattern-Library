@@ -24,9 +24,9 @@ class Component extends React.Component {
     const component = this.state;
     const path = "/component/" + component.name;
     return (
-      <div>
-        <h2>{component.name}</h2>
-        <iframe src={path} name={component.name} width="420" height="420"></iframe>
+      <div className="app-component">
+        <h2 className="app-component__title">{component.name}</h2>
+        <iframe className="app-component__iframe" src={path} name={component.name}></iframe>
       </div>
     );
   }

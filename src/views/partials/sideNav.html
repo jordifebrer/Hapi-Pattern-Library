@@ -1,29 +1,38 @@
-<nav>
+<nav class="hidden-print hidden-xs hidden-sm affix-top">
     {{#if components}}
-    <h4>Components</h4>
-    <ul>
+    <ul class="nav nav-list">
+         <li>Components
         {{#each components}}
-
-        <li>{{this.name}}</li>
+        <li>
+          <a href="/component/{{this.name}}">{{this.name}}</a>
+        </li>
         {{/each}}
+        </li>
     </ul>
     {{/if}}
 
     {{#if templates}}
-    <h4>Templates</h4>
-    <ul>
+    <ul class="nav nav-list affix-top">
+         <li>Templates
         {{#each templates}}
-        <li>{{this.name}}</li>
+        <li>
+          <a href="/template/{{this.name}}">{{this.name}}</a>
+        </li>
         {{/each}}
+        </li>
     </ul>
     {{/if}}
 
     {{#if patterns}}
-    <h4>Patterns</h4>
-    <ul>
+
+    <ul class="nav nav-list affix-top">
+        <li>Patterns
         {{#each patterns}}
-        <li>{{this.name}}</li>
+        <li>
+          <a href="/pattern/{{this.name}}">{{this.name}}</a>
+        </li>
         {{/each}}
+        </li>
     </ul>
     {{/if}}
   </nav>

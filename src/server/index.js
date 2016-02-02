@@ -56,7 +56,8 @@ class Server {
       debug: false,
       routePath: '/styles/{file}.css',
       includePaths: [
-        this.root + '/src/assets/styles/'
+        this.root + '/src/assets/styles/',
+        this.root + '/node_modules/bootstrap/dist/css/'
       ],
       outputStyle: 'compressed',
       sourceComments: true
