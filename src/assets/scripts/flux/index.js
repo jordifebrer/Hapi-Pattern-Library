@@ -1,13 +1,13 @@
 import React from 'react';
 
-//import ComponentList from './components/app-component-list';
+import ComponentList from './components/app-component-list';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            components: this.props.components
+            components: props.components
         };
     }
 
@@ -27,11 +27,11 @@ class App extends React.Component {
     }
 
     render() {
+      const components = this.state.components;
+
       return (
         <div>
-        {this.state.components.map(component => {
-          return <div>{component.name}</div>
-        })}
+          <ComponentList components={components} />
         </div>
       );
     }

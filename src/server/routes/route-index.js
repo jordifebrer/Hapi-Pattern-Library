@@ -37,7 +37,7 @@ class IndexRoute {
       handler: function (request, reply) {
         reply.view('index', {
           context: _this.getData(),
-          reactClient: {components: components},
+          reactClient: components,
           react: ReactDom.renderToString(App({components: components})),
           script: ['/scripts/bundle'],
           style: ['/styles/main.css']

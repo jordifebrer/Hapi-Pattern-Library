@@ -1,22 +1,18 @@
 <a href="/api">API</a>
 
-<div id="react-root">
-  {{{react}}}
-</div>
-
 {{!-- Side Nav --}}
 
 {{> sideNav context}}
 
-{{!-- Component Iframes --}}
 
-{{#each context.components}}
-  <h2>{{this.name}}</h2>
+{{!-- Component Views --}}
 
-  {{> iframe}}
-{{/each}}
+<div id="react-root">
+  {{{react}}}
+</div>
 
 
+{{!-- Data for react if Server render fails --}}
 <script>
   var reactClient = {{{json reactClient}}};
 </script>
