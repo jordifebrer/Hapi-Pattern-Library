@@ -7,9 +7,6 @@ const ReactDom = require('react-dom/server');
 const ReactComponent = require('../../assets/scripts/flux');
 const App = React.createFactory(ReactComponent);
 
-const safeStringify = json =>
-  JSON.stringify(json).replace(/<\/script/g, '<\\/script').replace(/<!--/g, '<\\!--');
-
 class IndexRoute {
   constructor(server, data, emitter) {
     this.data = data;
@@ -40,8 +37,8 @@ class IndexRoute {
       handler: function (request, reply) {
         reply.view('index', {
           context: _this.getData(),
-          reactClient: safeStringify(components),
-          react: ReactDom.renderToString(App(components)),
+          reactClient: {components: components},
+          react: ReactDom.renderToString(App({components: components})),
           script: ['/scripts/bundle'],
           style: ['/styles/main.css']
         });

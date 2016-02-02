@@ -12,11 +12,11 @@
 
 {{#each context.components}}
   <h2>{{this.name}}</h2>
-  
+
   {{> iframe}}
 {{/each}}
 
 
 <script>
-  var reactClient = {{reactClient}};
+  var reactClient = {{{json reactClient}}};
 </script>

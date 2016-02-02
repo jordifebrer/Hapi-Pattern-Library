@@ -1,18 +1,40 @@
-const isNode = typeof module !== 'undefined' && module.exports
-  , React = isNode ? require('react') : window.React
-  , ReactDOM = isNode ? require('react') : window.ReactDOM;
+import React from 'react';
 
+//import ComponentList from './components/app-component-list';
 
 class App extends React.Component {
-  render() {
-    return (
-      <div>{this.props[0].name}</div>
-    );
-  }
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            components: this.props.components
+        };
+    }
+
+    componentDidMount() {
+        const _this = this;
+        const socket = window.socket;
+
+        socket.on('update', data => {
+            _this.stateHandler({
+                components: data.components
+            });
+        });
+    }
+
+    stateHandler(newState) {
+        this.setState(newState);
+    }
+
+    render() {
+      return (
+        <div>
+        {this.state.components.map(component => {
+          return <div>{component.name}</div>
+        })}
+        </div>
+      );
+    }
 }
 
-if (isNode) {
-  module.exports = App;
-} else {
-  module.exports = ReactDOM.render(<App data={window.reactClient} />, document.getElementById('react-root'));
-}
+module.exports = props => new App(props);

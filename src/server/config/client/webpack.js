@@ -45,7 +45,7 @@ class WebpackConfig {
       }
 
       if (stats.compilation.errors.length >= 1) {
-        console.log(stats.compilation.errors)
+        console.log(stats.compilation.errors);
       }
     });
   }
