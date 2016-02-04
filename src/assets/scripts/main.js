@@ -1,5 +1,3 @@
-require('./client');
-
 if (document.getElementById('react-root')) {
   const React = require('react');
   const ReactDOM = require('react-dom');

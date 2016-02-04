@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ComponentList from './components/app-component-list';
 
 class App extends React.Component {
