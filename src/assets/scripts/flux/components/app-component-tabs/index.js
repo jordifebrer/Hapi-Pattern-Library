@@ -1,6 +1,6 @@
 import React from 'react';
-import TabSwicther from 'tab-switcher';
-import TabContent from 'tab-content';
+import TabSwitcher from './tab-switcher';
+import TabContent from './tab-content';
 
 class ComponentTabs extends React.Component {
   constructor(props) {
@@ -35,28 +35,19 @@ class ComponentTabs extends React.Component {
     };
   }
 
-  componentDidMount() {
-
-  }
-
-  closeTabs() {
-    this.setState({active: false});
-  }
-
-  handleClick(_) {
-    this.setState({active: _});
-  }
-
   render() {
-    const names = this.state.tabs.map(tab => tab.name);
+    let closeButtonClass;
+    if(this.state.active){
+      closeButtonClass = 'enabled';
+    } else {
+      closeButtonClass = 'disabled';
+    }
 
     return (
       <div>
-        {if(this.state.active) {
-          return <button onClick={this.closeTabs}>Close</button>
-        }}
-        <TabSwicther items={names} active={this.state.active} onTabClick={this.handleClick} />
-        <TabContent items={this.state.tabs} active={this.state.active} />
+        <button className={closeButtonClass}>Close</button>
+        <TabSwicther data={this.state} />
+        <TabContent data={this.state} />
       </div>
     );
   }
