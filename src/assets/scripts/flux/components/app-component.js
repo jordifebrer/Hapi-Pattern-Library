@@ -10,9 +10,27 @@ class Component extends React.Component {
   componentDidMount() {
     const _this = this;
     const socket = window.socket;
+    const iframes = Array.prototype.slice.call(document.querySelectorAll('iframe'));
+
+    const resizeIframe = iframe =>
+      iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+
+    window.addEventListener('load', () => iframes.map(iframe => {
+        resizeIframe(iframe);
+    }), false);
 
     socket.on('update', data => {
-      _this.stateHandler(data.components[_this.state.id]);
+      if(data.components[_this.state.id] !== this.state){
+        _this.stateHandler(data.components[_this.state.id]);
+
+        iframes.map(iframe => {
+          if(iframe.name === data.file) {
+            iframe.contentWindow.location.reload();
+
+            resizeIframe(iframe);
+          }
+        });
+      }
     });
   }
 

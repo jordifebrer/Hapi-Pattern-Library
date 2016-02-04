@@ -17,10 +17,6 @@ class StaticRoute {
       {
         src: "/src/assets/scripts/bundle/bundle.js",
         url: "/scripts/bundle"
-      },
-      {
-        src: "/node_modules/jquery/dist/jquery.min.js",
-        url: "/scripts/jquery"
       }
     ];
 

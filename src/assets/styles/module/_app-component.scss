@@ -1,11 +1,11 @@
 .app-component {
   &__title {
   }
-  
+
   &__iframe {
     border: none;
     border-top: 1px solid #000;
-    min-height: 250px;
+/*    min-height: 250px;*/
     width: 100%;
   }
 }

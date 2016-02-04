@@ -1,4 +1,3 @@
-require('bootstrap');
 require('./client');
 
 if (document.getElementById('react-root')) {

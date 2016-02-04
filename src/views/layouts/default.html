@@ -8,7 +8,7 @@
     <script type="text/javascript">
     var socket = io();
     </script>
-    
+
     {{#each style}}
       <link rel="stylesheet" href="{{this}}" media="screen" title="no title" charset="utf-8">
     {{/each}}
@@ -16,7 +16,7 @@
 
   <body>
     {{{content}}}
-    
+
     {{#each script}}
       <script src="{{this}}"></script>
     {{/each}}

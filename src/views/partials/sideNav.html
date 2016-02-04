@@ -1,38 +1,36 @@
-<nav class="hidden-print hidden-xs hidden-sm affix-top">
-    {{#if components}}
-    <ul class="nav nav-list">
-         <li>Components
-        {{#each components}}
-        <li>
-          <a href="/component/{{this.name}}">{{this.name}}</a>
-        </li>
-        {{/each}}
-        </li>
-    </ul>
-    {{/if}}
+{{#if components}}
+<ul>
+     <li>Components
+    {{#each components}}
+    <li>
+      <a href="/component/{{this.name}}">{{this.name}}</a>
+    </li>
+    {{/each}}
+    </li>
+</ul>
+{{/if}}
 
-    {{#if templates}}
-    <ul class="nav nav-list affix-top">
-         <li>Templates
-        {{#each templates}}
-        <li>
-          <a href="/template/{{this.name}}">{{this.name}}</a>
-        </li>
-        {{/each}}
-        </li>
-    </ul>
-    {{/if}}
+{{#if templates}}
+<ul>
+     <li>Templates
+    {{#each templates}}
+    <li>
+      <a href="/template/{{this.name}}">{{this.name}}</a>
+    </li>
+    {{/each}}
+    </li>
+</ul>
+{{/if}}
 
-    {{#if patterns}}
+{{#if patterns}}
 
-    <ul class="nav nav-list affix-top">
-        <li>Patterns
-        {{#each patterns}}
-        <li>
-          <a href="/pattern/{{this.name}}">{{this.name}}</a>
-        </li>
-        {{/each}}
-        </li>
-    </ul>
-    {{/if}}
-  </nav>
+<ul>
+    <li>Patterns
+    {{#each patterns}}
+    <li>
+      <a href="/pattern/{{this.name}}">{{this.name}}</a>
+    </li>
+    {{/each}}
+    </li>
+</ul>
+{{/if}}
