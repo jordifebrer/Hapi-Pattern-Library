@@ -1,5 +1,5 @@
 import React from 'react';
-import ComponentTabs from './app-component-tabs/index';
+import ComponentTabs from './app-component-tabs';
 
 class Component extends React.Component {
   constructor(props) {
