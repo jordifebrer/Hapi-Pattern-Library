@@ -4,11 +4,23 @@ class TabSwitcher extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = props.data;
+        this.state = {
+            data: props.data.tabs,
+            active: props.data.active
+        };
     }
 
     render() {
+        return (
+            <ul>
+                {this.state.data.map((item, index) => {
+                    return (
+                        <li key={index}><a href={`#${item.name}`}>{item.name}</a></li>
+                    );
+                })}
+            </ul>
+        );
     }
 }
 
-module.export = props => new TabSwitcher(props);
+module.exports = props => new TabSwitcher(props);

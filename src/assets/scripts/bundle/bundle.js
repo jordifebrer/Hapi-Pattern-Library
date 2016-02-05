@@ -19800,9 +19800,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _appComponentTabs = __webpack_require__(162);
+	var _index = __webpack_require__(162);
 
-	var _appComponentTabs2 = _interopRequireDefault(_appComponentTabs);
+	var _index2 = _interopRequireDefault(_index);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19885,7 +19885,7 @@
 	          component.name
 	        ),
 	        _react2.default.createElement('iframe', { className: 'app-component__iframe', src: path, name: component.name }),
-	        _react2.default.createElement(_appComponentTabs2.default, { data: data })
+	        _react2.default.createElement(_index2.default, { data: data })
 	      );
 	    }
 	  }]);
@@ -19901,7 +19901,7 @@
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
+	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -19909,11 +19909,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _tabSwitcher = __webpack_require__(164);
+	var _tabSwitcher = __webpack_require__(163);
 
 	var _tabSwitcher2 = _interopRequireDefault(_tabSwitcher);
 
-	var _tabContent = __webpack_require__(165);
+	var _tabContent = __webpack_require__(164);
 
 	var _tabContent2 = _interopRequireDefault(_tabContent);
 
@@ -19937,6 +19937,9 @@
 
 	    _this.state = {
 	      tabs: [{
+	        name: 'Docs',
+	        content: data.docs
+	      }, {
 	        name: 'Markup',
 	        content: data.markup
 	      }, {
@@ -19948,9 +19951,6 @@
 	      }, {
 	        name: 'Scripts',
 	        content: data.scripts
-	      }, {
-	        name: 'Docs',
-	        content: data.docs
 	      }],
 	      active: false
 	    };
@@ -19973,9 +19973,9 @@
 	        _react2.default.createElement(
 	          'button',
 	          { className: closeButtonClass },
-	          'Close'
+	          'Close Tabs'
 	        ),
-	        _react2.default.createElement(TabSwicther, { data: this.state }),
+	        _react2.default.createElement(_tabSwitcher2.default, { data: this.state }),
 	        _react2.default.createElement(_tabContent2.default, { data: this.state })
 	      );
 	    }
@@ -19984,32 +19984,15 @@
 	  return ComponentTabs;
 	}(_react2.default.Component);
 
-	module.export = function (props) {
+	module.exports = function (props) {
 	  return new ComponentTabs(props);
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(163)(module)))
 
 /***/ },
 /* 163 */
-/***/ function(module, exports) {
-
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
-
-/***/ },
-/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
+	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20033,28 +20016,48 @@
 
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TabSwitcher).call(this, props));
 
-	        _this.state = props.data;
+	        _this.state = {
+	            data: props.data.tabs,
+	            active: props.data.active
+	        };
 	        return _this;
 	    }
 
 	    _createClass(TabSwitcher, [{
 	        key: 'render',
-	        value: function render() {}
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'ul',
+	                null,
+	                this.state.data.map(function (item, index) {
+	                    return _react2.default.createElement(
+	                        'li',
+	                        { key: index },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '#' + item.name },
+	                            item.name
+	                        )
+	                    );
+	                })
+	            );
+	        }
 	    }]);
 
 	    return TabSwitcher;
 	}(_react2.default.Component);
 
-	module.export = function (props) {
+	module.exports = function (props) {
 	    return new TabSwitcher(props);
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(163)(module)))
 
 /***/ },
-/* 165 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20078,13 +20081,40 @@
 
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TabContent).call(this, props));
 
-	        _this.state = props.data;
+	        _this.state = {
+	            data: props.data.tabs,
+	            active: props.data.active
+	        };
 	        return _this;
 	    }
 
 	    _createClass(TabContent, [{
 	        key: 'render',
-	        value: function render() {}
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                this.state.data.map(function (item, index) {
+	                    var content = item.content;
+	                    if (_typeof(item.content) === 'object') {
+	                        content = JSON.stringify(item.content);
+	                    }
+	                    return _react2.default.createElement(
+	                        'div',
+	                        { key: index },
+	                        _react2.default.createElement(
+	                            'pre',
+	                            null,
+	                            _react2.default.createElement(
+	                                'code',
+	                                null,
+	                                content
+	                            )
+	                        )
+	                    );
+	                })
+	            );
+	        }
 	    }]);
 
 	    return TabContent;

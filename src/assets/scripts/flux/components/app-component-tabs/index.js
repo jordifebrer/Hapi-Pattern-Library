@@ -11,6 +11,10 @@ class ComponentTabs extends React.Component {
     this.state = {
       tabs: [
         {
+          name: 'Docs',
+          content: data.docs
+        },
+        {
           name: 'Markup',
           content: data.markup
         },
@@ -25,10 +29,6 @@ class ComponentTabs extends React.Component {
         {
           name: 'Scripts',
           content: data.scripts
-        },
-        {
-          name: 'Docs',
-          content: data.docs
         }
       ],
       active: false
@@ -45,12 +45,12 @@ class ComponentTabs extends React.Component {
 
     return (
       <div>
-        <button className={closeButtonClass}>Close</button>
-        <TabSwicther data={this.state} />
+        <button className={closeButtonClass}>Close Tabs</button>
+        <TabSwitcher data={this.state} />
         <TabContent data={this.state} />
       </div>
     );
   }
 }
 
-module.export = props => new ComponentTabs(props);
+module.exports = props => new ComponentTabs(props);
