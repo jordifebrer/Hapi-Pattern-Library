@@ -19813,88 +19813,84 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Component = function (_React$Component) {
-	  _inherits(Component, _React$Component);
+	    _inherits(Component, _React$Component);
 
-	  function Component(props) {
-	    _classCallCheck(this, Component);
+	    function Component(props) {
+	        _classCallCheck(this, Component);
 
-	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Component).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Component).call(this, props));
 
-	    _this2.state = props.data;
-	    return _this2;
-	  }
-
-	  _createClass(Component, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this3 = this;
-
-	      var _this = this;
-	      var socket = window.socket;
-	      var iframes = Array.prototype.slice.call(document.querySelectorAll('iframe'));
-
-	      var resizeIframe = function resizeIframe(iframe) {
-	        return iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-	      };
-
-	      window.addEventListener('load', function () {
-	        return iframes.map(function (iframe) {
-	          resizeIframe(iframe);
-	        });
-	      }, false);
-
-	      socket.on('update', function (data) {
-	        if (data.components[_this.state.id] !== _this3.state) {
-	          _this.stateHandler(data.components[_this.state.id]);
-
-	          iframes.map(function (iframe) {
-	            if (iframe.name === data.file) {
-	              iframe.contentWindow.location.reload();
-
-	              resizeIframe(iframe);
+	        _this.state = {
+	            id: props.data.id,
+	            name: props.data.name,
+	            data: {
+	                markup: props.data.markup,
+	                context: props.data.context,
+	                styles: props.data.styles,
+	                scripts: props.data.scripts,
+	                docs: props.data.docs
 	            }
-	          });
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Component, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this2 = this;
+
+	            var socket = window.socket;
+	            var iframes = Array.prototype.slice.call(document.querySelectorAll('iframe'));
+
+	            var resizeIframe = function resizeIframe(iframe) {
+	                return iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+	            };
+
+	            window.addEventListener('load', function () {
+	                return iframes.map(function (iframe) {
+	                    resizeIframe(iframe);
+	                });
+	            }, false);
+
+	            socket.on('update', function (data) {
+	                if (data.file === _this2.state.name) {
+	                    iframes.map(function (iframe) {
+	                        if (iframe.name === data.file) {
+	                            iframe.contentWindow.location.reload();
+
+	                            resizeIframe(iframe);
+	                        }
+	                    });
+	                }
+	            });
 	        }
-	      });
-	    }
-	  }, {
-	    key: 'stateHandler',
-	    value: function stateHandler(newState) {
-	      this.setState(newState);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var component = this.state;
-	      var path = "/component/" + component.name;
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var path = "/component/" + this.state.name;
 
-	      var data = {
-	        markup: component.markup,
-	        context: component.context,
-	        styles: component.styles,
-	        scripts: component.scripts,
-	        docs: component.docs
-	      };
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'app-component' },
+	                _react2.default.createElement(
+	                    'h2',
+	                    { className: 'app-component__title' },
+	                    this.state.name
+	                ),
+	                _react2.default.createElement('iframe', { className: 'app-component__iframe', src: path,
+	                    name: this.state.name }),
+	                _react2.default.createElement(_appComponentTabs2.default, { data: this.state.data,
+	                    componentName: this.state.name,
+	                    componentId: this.state.id })
+	            );
+	        }
+	    }]);
 
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'app-component' },
-	        _react2.default.createElement(
-	          'h2',
-	          { className: 'app-component__title' },
-	          component.name
-	        ),
-	        _react2.default.createElement('iframe', { className: 'app-component__iframe', src: path, name: component.name }),
-	        _react2.default.createElement(_appComponentTabs2.default, { data: data })
-	      );
-	    }
-	  }]);
-
-	  return Component;
+	    return Component;
 	}(_react2.default.Component);
 
 	module.exports = function (props) {
-	  return new Component(props);
+	    return new Component(props);
 	};
 
 /***/ },
@@ -19927,77 +19923,103 @@
 	    function ComponentTabs(props) {
 	        _classCallCheck(this, ComponentTabs);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ComponentTabs).call(this, props));
+	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(ComponentTabs).call(this, props));
 
-	        var data = props.data;
-
-	        _this.state = {
+	        _this2.state = {
+	            id: props.componentId,
+	            name: props.componentName,
 	            tabs: [{
 	                name: 'Docs',
-	                content: data.docs
+	                content: props.data.docs
 	            }, {
 	                name: 'Markup',
-	                content: data.markup
+	                content: props.data.markup
 	            }, {
-	                name: 'Content',
-	                content: data.context
+	                name: 'Context',
+	                content: props.data.context
 	            }, {
 	                name: 'Styles',
-	                content: data.styles
+	                content: props.data.styles
 	            }, {
 	                name: 'Scripts',
-	                content: data.scripts
+	                content: props.data.scripts
 	            }]
 	        };
-	        return _this;
+	        return _this2;
 	    }
 
 	    _createClass(ComponentTabs, [{
-	        key: 'handleSelect',
-	        value: function handleSelect(index, last) {
-	            console.log('Selected tab: ' + index + ', last tab: ' + last);
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this3 = this;
+
+	            var _this = this;
+	            var socket = window.socket;
+
+	            socket.on('update', function (data) {
+	                if (data.file === _this3.state.name) {
+	                    var component = data.components[_this.state.id];
+
+	                    _this.setState({
+	                        id: component.id,
+	                        name: component.name,
+	                        tabs: [{
+	                            name: 'Docs',
+	                            content: component.docs
+	                        }, {
+	                            name: 'Markup',
+	                            content: component.markup
+	                        }, {
+	                            name: 'Context',
+	                            content: component.context
+	                        }, {
+	                            name: 'Styles',
+	                            content: component.styles
+	                        }, {
+	                            name: 'Scripts',
+	                            content: component.scripts
+	                        }]
+	                    });
+	                }
+	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'div',
+	                _main.Tabs,
 	                null,
 	                _react2.default.createElement(
-	                    _main.Tabs,
-	                    { onSelect: this.handleSelect },
-	                    _react2.default.createElement(
-	                        _main.TabList,
-	                        null,
-	                        this.state.tabs.map(function (item, index) {
-	                            return _react2.default.createElement(
-	                                _main.Tab,
-	                                { key: index },
-	                                item.name
-	                            );
-	                        })
-	                    ),
+	                    _main.TabList,
+	                    null,
 	                    this.state.tabs.map(function (item, index) {
-	                        var content = item.content;
-	                        if (_typeof(item.content) === 'object') {
-	                            content = JSON.stringify(item.content);
-	                        }
-
 	                        return _react2.default.createElement(
-	                            _main.TabPanel,
+	                            _main.Tab,
 	                            { key: index },
-	                            _react2.default.createElement(
-	                                'pre',
-	                                null,
-	                                _react2.default.createElement(
-	                                    'code',
-	                                    null,
-	                                    content
-	                                )
-	                            )
+	                            item.name
 	                        );
 	                    })
-	                )
+	                ),
+	                this.state.tabs.map(function (item, index) {
+	                    var content = item.content;
+	                    if (_typeof(item.content) === 'object') {
+	                        content = JSON.stringify(item.content);
+	                    }
+
+	                    return _react2.default.createElement(
+	                        _main.TabPanel,
+	                        { key: index },
+	                        _react2.default.createElement(
+	                            'pre',
+	                            null,
+	                            _react2.default.createElement(
+	                                'code',
+	                                null,
+	                                content
+	                            )
+	                        )
+	                    );
+	                })
 	            );
 	        }
 	    }]);

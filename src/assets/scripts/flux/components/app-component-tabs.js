@@ -5,63 +5,95 @@ class ComponentTabs extends React.Component {
     constructor(props) {
         super(props);
 
-        const data = props.data;
-
         this.state = {
+            id: props.componentId,
+            name: props.componentName,
             tabs: [
                 {
                     name: 'Docs',
-                    content: data.docs
+                    content: props.data.docs
                 },
                 {
                     name: 'Markup',
-                    content: data.markup
+                    content: props.data.markup
                 },
                 {
-                    name: 'Content',
-                    content: data.context
+                    name: 'Context',
+                    content: props.data.context
                 },
                 {
                     name: 'Styles',
-                    content: data.styles
+                    content: props.data.styles
                 },
                 {
                     name: 'Scripts',
-                    content: data.scripts
+                    content: props.data.scripts
                 }
             ]
         };
     }
 
-    handleSelect(index, last) {
-        console.log('Selected tab: ' + index + ', last tab: ' + last);
+    componentDidMount() {
+        const _this = this;
+        const socket = window.socket;
+
+        socket.on('update', data => {
+            if (data.file === this.state.name) {
+                const component = data.components[_this.state.id];
+
+                _this.setState({
+                    id: component.id,
+                    name: component.name,
+                    tabs: [
+                        {
+                            name: 'Docs',
+                            content: component.docs
+                        },
+                        {
+                            name: 'Markup',
+                            content: component.markup
+                        },
+                        {
+                            name: 'Context',
+                            content: component.context
+                        },
+                        {
+                            name: 'Styles',
+                            content: component.styles
+                        },
+                        {
+                            name: 'Scripts',
+                            content: component.scripts
+                        }
+                    ]
+                });
+            }
+        });
     }
 
     render() {
         return (
-            <div>
-                <Tabs onSelect={this.handleSelect}>
-                    <TabList>
-                        {this.state.tabs.map((item, index) => {
-                            return (
-                                <Tab key={index}>{item.name}</Tab>
-                            );
-                        })}
-                    </TabList>
+            <Tabs>
+                <TabList>
                     {this.state.tabs.map((item, index) => {
-                        let content = item.content;
-                        if (typeof item.content === 'object') {
-                            content = JSON.stringify(item.content);
-                        }
-
                         return (
-                            <TabPanel key={index}>
-                                <pre><code>{content}</code></pre>
-                            </TabPanel>
+                            <Tab key={index}>{item.name}</Tab>
                         );
                     })}
-                </Tabs>
-            </div>
+                </TabList>
+                {this.state.tabs.map((item, index) => {
+                    let content = item.content;
+                    if (typeof item.content === 'object') {
+                        content = JSON.stringify(item.content);
+                    }
+
+                    return (
+                        <TabPanel key={index}>
+                            <pre><code>{content}</code></pre>
+                        </TabPanel>
+                    );
+                })}
+            </Tabs>
         );
     }
 }

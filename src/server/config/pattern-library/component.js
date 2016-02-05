@@ -25,7 +25,7 @@ class ComponentConfig {
     return {
       docs: currentDir + "/README.md",
       html: currentDir + "/index.html",
-      styles: currentDir + "/styles/main.less",
+      styles: currentDir + "/styles/main.scss",
       scripts: currentDir + "/scripts/main.js",
       context: currentDir + "/context.json"
     };
