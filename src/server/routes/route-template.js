@@ -30,7 +30,7 @@ class TemplateRoute {
       path: this.path,
       handler: function(request, reply) {
         reply.view('template', {
-          component: _this.getData(request),
+          template: _this.getData(request),
           style: [],
           script: []
         });

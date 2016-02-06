@@ -31,7 +31,7 @@ class PatternRoute {
       handler: function(request, reply) {
 
         reply.view('pattern', {
-          component: _this.getData(request),
+          pattern: _this.getData(request),
           style: [],
           script: []
         });

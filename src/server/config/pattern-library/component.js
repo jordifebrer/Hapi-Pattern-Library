@@ -2,73 +2,96 @@
 
 const Path = require("path");
 const fs = require("fs");
+const Handlebars = require("handlebars");
 
 class ComponentConfig {
-  constructor(root) {
-    this.root = root;
+    constructor(root) {
+        this.root = root;
 
-    this.dir = Path.join(this.root, "/pattern-library/components");
+        this.dir = Path.join(this.root, "/pattern-library/components");
 
-    let components = [];
-    fs.readdirSync(this.dir).forEach(_ => {
-      if (_.charAt(0) !== ".") {
-        components.push(_);
-      }
-    });
+        let components = [];
+        fs.readdirSync(this.dir).forEach(_ => {
+            if (_.charAt(0) !== ".") {
+                components.push(_);
+            }
+        });
 
-    this.components = components;
-  }
-
-  files(component) {
-    const currentDir = this.dir + "/" + component;
-
-    return {
-      docs: currentDir + "/README.md",
-      html: currentDir + "/index.html",
-      styles: currentDir + "/styles/main.scss",
-      scripts: currentDir + "/scripts/main.js",
-      context: currentDir + "/context.json"
-    };
-  }
-
-  catcher(file, json) {
-    try {
-      if (json) {
-        return JSON.parse(fs.readFileSync(file, "utf8"));
-      } else {
-        return fs.readFileSync(file, "utf8");
-      }
-    } catch (e) {
-      return `${file}, not found.`;
+        this.components = components;
     }
-  }
 
-  data() {
-    const _this = this;
-    const componentArr = [];
+    files(component) {
+        const currentDir = this.dir + "/" + component;
 
-    this.components.forEach((component, index) => {
-      let files = _this.files(component);
+        return {
+            docs: currentDir + "/README.md",
+            html: currentDir + "/index.html",
+            styles: currentDir + "/styles/main.scss",
+            scripts: currentDir + "/scripts/main.js",
+            context: currentDir + "/context.json"
+        };
+    }
 
-      let currentComponent = {};
+    catcher(file, json) {
+        try {
+            if (json) {
+                return JSON.parse(fs.readFileSync(file, "utf8"));
+            } else {
+                return fs.readFileSync(file, "utf8");
+            }
+        } catch (e) {
+            return `${file}, not found.`;
+        }
+    }
 
-      currentComponent.id = index;
-      currentComponent.name = component;
-      currentComponent.docs = _this.catcher(files.docs, false);
-      currentComponent.markup = _this.catcher(files.html, false);
-      currentComponent.styles = _this.catcher(files.styles, false);
-      currentComponent.scripts = _this.catcher(files.scripts, false);
-      currentComponent.context = _this.catcher(files.context, true);
+    compileHandlebars(src, context) {
+        let template;
 
-      currentComponent.files = files;
-      currentComponent.compiledHtml = "";
+        src = src;
+        context = context;
+        template = Handlebars.compile(src);
+        return template(context);
+    }
 
-      componentArr.push(currentComponent);
-    });
+    data() {
+        const _this = this;
+        const componentArr = [];
 
-    return componentArr;
-  }
+        this.components.forEach(component => {
+            const files = _this.files(component);
+
+            Handlebars.registerPartial(
+                component,
+                _this.catcher(files.html, false)
+            );
+        });
+
+        this.components.forEach((component, index) => {
+            const files = _this.files(component);
+
+            const currentComponent = {};
+
+            currentComponent.id = index;
+            currentComponent.name = component;
+            currentComponent.docs = _this.catcher(files.docs, false);
+            currentComponent.markup = _this.catcher(files.html, false);
+            currentComponent.styles = _this.catcher(files.styles, false);
+            currentComponent.scripts = _this.catcher(files.scripts, false);
+            currentComponent.context = _this.catcher(files.context, true);
+
+            currentComponent.files = files;
+            currentComponent.compiledHtml = _this.compileHandlebars(
+                currentComponent.markup,
+                currentComponent.context
+            );
+
+            componentArr.push(currentComponent);
+        });
+
+
+        return componentArr;
+    }
 }
 
 module.exports = root =>
-  new ComponentConfig(root);
+    new ComponentConfig(root);
