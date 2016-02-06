@@ -12,4 +12,4 @@ class Styles {
     }
 }
 
-module.exports = root = new Styles(root);
+module.exports = root => new Styles(root);

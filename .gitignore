@@ -38,3 +38,6 @@ node_modules
 # Remove Bundles/Generated files
 src/assets/scripts/bundle/bundle.js
 src/assets/styles/main.css
+
+# Remove tern files
+.tern-port

@@ -12,4 +12,4 @@ class Scripts {
     }
 }
 
-module.exports = root = new Scripts(root);
+module.exports = root => new Scripts(root);
