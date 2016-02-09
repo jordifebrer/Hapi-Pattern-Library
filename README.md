@@ -3,7 +3,7 @@ A Pattern Library based on [Hapi.js](http://hapijs.com/)
 
 ## Getting started
 
-You will need to have a recent version on `node` installed
+You will need to have a recent version of `node` installed
 
 If `node` is installed run the following commands to get started:
 
