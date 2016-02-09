@@ -41,3 +41,5 @@ src/assets/styles/main.css
 
 # Remove tern files
 .tern-port
+
+.DS_Store
