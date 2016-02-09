@@ -1,9 +1,16 @@
-<div id="react-root">
-    {{{react}}}
+<div class="row">
+
+    <main id="react-root" class="nine columns">
+        {{{react}}}
+    </main>
+
+    <div class="three columns sideNav">
+        <a href="/api">API</a> 
+        {{> sideNav context}}
+    </div>
+
 </div>
 
-<a href="/api">API</a>
-{{> sideNav context}}
 
 
 <script>

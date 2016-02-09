@@ -47,7 +47,7 @@ class Component extends React.Component {
 
         return (
             <div className="app-component">
-                <h2 className="app-component__title">{this.state.name}</h2>
+                <h4 className="app-component__title">{this.state.name}</h4>
                 <iframe className="app-component__iframe" src={path}
                         name={this.state.name}></iframe>
                 <ComponentTabs data={this.state.data}

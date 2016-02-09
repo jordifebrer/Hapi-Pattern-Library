@@ -1,1 +1,8 @@
 {{{component.compiledHtml}}}
+
+
+<script>
+    window.socket.on('update', function() {
+        window.location.reload();
+    });
+</script>

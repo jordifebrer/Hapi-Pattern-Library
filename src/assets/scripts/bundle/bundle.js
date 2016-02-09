@@ -19873,7 +19873,7 @@
 	                'div',
 	                { className: 'app-component' },
 	                _react2.default.createElement(
-	                    'h2',
+	                    'h4',
 	                    { className: 'app-component__title' },
 	                    this.state.name
 	                ),

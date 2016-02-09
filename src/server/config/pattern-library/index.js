@@ -1,5 +1,6 @@
 "use strict";
 
+const chalk = require('chalk');
 const chokidar = require('chokidar');
 
 class PatternLibrary {
@@ -42,7 +43,7 @@ class PatternLibrary {
         });
 
         const handler = path => {
-            console.log(`File | ${path} | has been changed`);
+            console.log(`File | ${chalk.green.underline(path)} | has been changed`);
 
             _this.library();
 
@@ -51,10 +52,8 @@ class PatternLibrary {
                 const fileType = arr.pop().split('.')[1];
 
                 if(fileType === 'scss' || fileType === 'js') {
-                    console.log(arr[arr.length - 2]);
                     return arr[arr.length - 2];
                 } else {
-                    console.log(arr[arr.length - 1]);
                     return arr[arr.length - 1];
                 }
 

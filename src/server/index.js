@@ -6,8 +6,9 @@ const Inert = require("inert");
 const Vision = require("vision");
 const Handlebars = require("handlebars");
 const HapiSass = require("hapi-sass");
+const chalk = require('chalk');
 const Events = require("events");
-const EventEmitter = new Events.EventEmitter();
+const EventEmitter = new Events.EventEmitter().setMaxListeners(50);
 
 
 class Server {
@@ -96,7 +97,7 @@ class Server {
 
   start() {
     this.server.start(() => {
-      console.log(`Server running at: ${this.server.info.uri}`);
+      console.log(`Server running at: ${chalk.blue.underline(this.server.info.uri)}`);
     });
   }
 
