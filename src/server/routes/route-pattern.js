@@ -32,8 +32,8 @@ class PatternRoute {
 
         reply.view("pattern", {
           pattern: _this.getData(request),
-          style: [],
-          script: ["/scripts/bundle"]
+          style: ["/app/styles/main"],
+          script: ["/scripts/bundle", "/app/scripts/bundle"]
         });
       }
     };

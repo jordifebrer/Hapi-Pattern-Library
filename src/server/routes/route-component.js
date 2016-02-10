@@ -31,8 +31,8 @@ class ComponentRoute {
       handler: function(request, reply) {
         reply.view("component", {
           component: _this.getData(request),
-          style: [],
-          script: ["/scripts/bundle"]
+          style: ["/app/styles/main"],
+          script: ["/scripts/bundle", "/app/scripts/bundle"]
         });
       }
     };

@@ -31,9 +31,9 @@ class Routes {
     const root = this.root;
     const server = this.server;
     const emitter = this.emitter;
-    
+
     this.staticRoutes()
-      .forEach(route => require(route)(server, root));
+      .forEach(route => require(route)(server, root, emitter));
     this.routes()
       .forEach(route => require(route)(server, data, emitter));
   }

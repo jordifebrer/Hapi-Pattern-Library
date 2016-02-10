@@ -31,8 +31,8 @@ class TemplateRoute {
       handler: function(request, reply) {
         reply.view("template", {
           template: _this.getData(request),
-          style: [],
-          script: ["/scripts/bundle"]
+          style: ["/app/styles/main"],
+          script: ["/scripts/bundle", "/app/scripts/bundle"]
         });
       }
     };
