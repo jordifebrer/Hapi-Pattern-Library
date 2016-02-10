@@ -19756,7 +19756,7 @@
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -19791,10 +19791,10 @@
 	  }
 
 	  _createClass(ComponentList, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
+	        "div",
 	        null,
 	        this.state.components.map(function (component, index) {
 	          return _react2.default.createElement(_appComponent2.default, { key: index, data: component });
@@ -19814,7 +19814,7 @@
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -19857,24 +19857,24 @@
 	    }
 
 	    _createClass(Component, [{
-	        key: 'componentDidMount',
+	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            var _this2 = this;
 
 	            var socket = window.socket;
-	            var iframes = Array.prototype.slice.call(document.querySelectorAll('iframe'));
+	            var iframes = Array.prototype.slice.call(document.querySelectorAll("iframe"));
 
 	            var resizeIframe = function resizeIframe(iframe) {
-	                return iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+	                return iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
 	            };
 
-	            window.addEventListener('load', function () {
+	            window.addEventListener("load", function () {
 	                return iframes.map(function (iframe) {
 	                    resizeIframe(iframe);
 	                });
 	            }, false);
 
-	            socket.on('update', function (data) {
+	            socket.on("update", function (data) {
 	                if (data.file === _this2.state.name) {
 	                    iframes.map(function (iframe) {
 	                        if (iframe.name === data.file) {
@@ -19887,19 +19887,23 @@
 	            });
 	        }
 	    }, {
-	        key: 'render',
+	        key: "render",
 	        value: function render() {
 	            var path = "/component/" + this.state.name;
 
 	            return _react2.default.createElement(
-	                'div',
-	                { className: 'app-component' },
+	                "div",
+	                { className: "pl-component" },
 	                _react2.default.createElement(
-	                    'h4',
-	                    { className: 'app-component__title' },
-	                    this.state.name
+	                    "h4",
+	                    { className: "pl-component__title" },
+	                    _react2.default.createElement(
+	                        "a",
+	                        { href: path, target: "_blank" },
+	                        this.state.name
+	                    )
 	                ),
-	                _react2.default.createElement('iframe', { className: 'app-component__iframe', src: path,
+	                _react2.default.createElement("iframe", { className: "pl-component__iframe", src: path,
 	                    name: this.state.name }),
 	                _react2.default.createElement(_appComponentTabs2.default, { data: this.state.data,
 	                    componentName: this.state.name,
@@ -19919,7 +19923,7 @@
 /* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
@@ -19951,19 +19955,19 @@
 	            id: props.componentId,
 	            name: props.componentName,
 	            tabs: [{
-	                name: 'Docs',
+	                name: "Docs",
 	                content: props.data.docs
 	            }, {
-	                name: 'Markup',
+	                name: "Markup",
 	                content: props.data.markup
 	            }, {
-	                name: 'Context',
+	                name: "Context",
 	                content: props.data.context
 	            }, {
-	                name: 'Styles',
+	                name: "Styles",
 	                content: props.data.styles
 	            }, {
-	                name: 'Scripts',
+	                name: "Scripts",
 	                content: props.data.scripts
 	            }]
 	        };
@@ -19971,14 +19975,14 @@
 	    }
 
 	    _createClass(ComponentTabs, [{
-	        key: 'componentDidMount',
+	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            var _this3 = this;
 
 	            var _this = this;
 	            var socket = window.socket;
 
-	            socket.on('update', function (data) {
+	            socket.on("update", function (data) {
 	                if (data.file === _this3.state.name) {
 	                    var component = data.components[_this.state.id];
 
@@ -19986,19 +19990,19 @@
 	                        id: component.id,
 	                        name: component.name,
 	                        tabs: [{
-	                            name: 'Docs',
+	                            name: "Docs",
 	                            content: component.docs
 	                        }, {
-	                            name: 'Markup',
+	                            name: "Markup",
 	                            content: component.markup
 	                        }, {
-	                            name: 'Context',
+	                            name: "Context",
 	                            content: component.context
 	                        }, {
-	                            name: 'Styles',
+	                            name: "Styles",
 	                            content: component.styles
 	                        }, {
-	                            name: 'Scripts',
+	                            name: "Scripts",
 	                            content: component.scripts
 	                        }]
 	                    });
@@ -20006,7 +20010,7 @@
 	            });
 	        }
 	    }, {
-	        key: 'render',
+	        key: "render",
 	        value: function render() {
 	            return _react2.default.createElement(
 	                _main.Tabs,
@@ -20024,7 +20028,7 @@
 	                ),
 	                this.state.tabs.map(function (item, index) {
 	                    var content = item.content;
-	                    if (_typeof(item.content) === 'object') {
+	                    if (_typeof(item.content) === "object") {
 	                        content = JSON.stringify(item.content);
 	                    }
 
@@ -20032,10 +20036,10 @@
 	                        _main.TabPanel,
 	                        { key: index },
 	                        _react2.default.createElement(
-	                            'pre',
-	                            null,
+	                            "pre",
+	                            { className: "pl-component__pre" },
 	                            _react2.default.createElement(
-	                                'code',
+	                                "code",
 	                                null,
 	                                content
 	                            )

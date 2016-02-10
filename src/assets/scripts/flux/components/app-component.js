@@ -1,5 +1,5 @@
-import React from 'react';
-import ComponentTabs from './app-component-tabs';
+import React from "react";
+import ComponentTabs from "./app-component-tabs";
 
 class Component extends React.Component {
     constructor(props) {
@@ -20,16 +20,16 @@ class Component extends React.Component {
 
     componentDidMount() {
         const socket = window.socket;
-        const iframes = Array.prototype.slice.call(document.querySelectorAll('iframe'));
+        const iframes = Array.prototype.slice.call(document.querySelectorAll("iframe"));
 
         const resizeIframe = iframe =>
-            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
 
-        window.addEventListener('load', () => iframes.map(iframe => {
+        window.addEventListener("load", () => iframes.map(iframe => {
             resizeIframe(iframe);
         }), false);
 
-        socket.on('update', data => {
+        socket.on("update", data => {
             if (data.file === this.state.name) {
                 iframes.map(iframe => {
                     if (iframe.name === data.file) {
@@ -46,9 +46,11 @@ class Component extends React.Component {
         const path = "/component/" + this.state.name;
 
         return (
-            <div className="app-component">
-                <h4 className="app-component__title">{this.state.name}</h4>
-                <iframe className="app-component__iframe" src={path}
+            <div className="pl-component">
+                <h4 className="pl-component__title">
+                    <a href={path} target="_blank">{this.state.name}</a>
+                </h4>
+                <iframe className="pl-component__iframe" src={path}
                         name={this.state.name}></iframe>
                 <ComponentTabs data={this.state.data}
                                componentName={this.state.name}

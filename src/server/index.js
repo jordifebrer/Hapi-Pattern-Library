@@ -10,7 +10,6 @@ const chalk = require('chalk');
 const Events = require("events");
 const EventEmitter = new Events.EventEmitter().setMaxListeners(50);
 
-
 class Server {
     constructor(root) {
         this.emitter = EventEmitter;
@@ -24,6 +23,7 @@ class Server {
     }
 
     data() {
+        const AppInfo = require(this.root + "/package.json");
         const config = this.config();
         const components = config.patternLibrary.components;
         const templates = config.patternLibrary.templates;
@@ -32,7 +32,13 @@ class Server {
         return {
             components: components,
             templates: templates,
-            patterns: patterns
+            patterns: patterns,
+            app: {
+                name: AppInfo.name,
+                version: AppInfo.version,
+                description: AppInfo.description,
+                author: AppInfo.author
+            }
         };
     }
 

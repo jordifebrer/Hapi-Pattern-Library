@@ -1,17 +1,19 @@
-<div class="row">
+<div class="pl">
+    <header class="pl-header">
+        <h2 class="pl-header__brand">{{context.app.name}}</h2>
+        <a class="pl-header__link" href="/api" target="_blank">Data: {{context.app.version}}</a>
+    </header>
 
-    <main id="react-root" class="nine columns">
-        {{{react}}}
+    <main class="pl__main">
+        <div class="pl__nav">
+            {{> sideNav context}}
+        </div>
+
+        <div id="react-root" class="pl__content">
+            {{{react}}}
+        </div>
     </main>
-
-    <div class="three columns sideNav">
-        {{> sideNav context}}
-        <hr>
-        <a class="button button-primary" href="/api">View API</a> 
-    </div>
-
 </div>
-
 
 
 <script>
