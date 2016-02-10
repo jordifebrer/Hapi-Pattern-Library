@@ -1,5 +1,5 @@
-import React from 'react';
-import ComponentList from './components/app-component-list';
+import React from "react";
+import ComponentList from "./components/app-component-list";
 
 class App extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class App extends React.Component {
         const _this = this;
         const socket = window.socket;
 
-        socket.on('update', data => {
+        socket.on("update", data => {
             _this.stateHandler({
                 components: data.components
             });

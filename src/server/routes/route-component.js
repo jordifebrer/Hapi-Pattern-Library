@@ -15,7 +15,7 @@ class ComponentRoute {
     const _this = this;
     const name = encodeURIComponent(request.params.name);
 
-    this.emitter.on('change', data => {
+    this.emitter.on("change", data => {
       _this.data = data;
     });
 
@@ -29,10 +29,10 @@ class ComponentRoute {
       method: "GET",
       path: this.path,
       handler: function(request, reply) {
-        reply.view('component', {
+        reply.view("component", {
           component: _this.getData(request),
           style: [],
-          script: []
+          script: ["/scripts/bundle"]
         });
       }
     };

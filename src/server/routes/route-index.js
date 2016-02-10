@@ -1,10 +1,10 @@
 "use strict";
 
-require('babel-core/register');
+require("babel-core/register");
 
-const React = require('react');
-const ReactDom = require('react-dom/server');
-const ReactComponent = require('../../assets/scripts/flux');
+const React = require("react");
+const ReactDom = require("react-dom/server");
+const ReactComponent = require("../../assets/scripts/flux");
 const App = React.createFactory(ReactComponent);
 
 class IndexRoute {
@@ -20,7 +20,7 @@ class IndexRoute {
 
   getData() {
     const _this = this;
-    this.emitter.on('change', data => {
+    this.emitter.on("change", data => {
       _this.data = data;
     });
 
@@ -35,12 +35,12 @@ class IndexRoute {
       method: "GET",
       path: this.path,
       handler: function (request, reply) {
-        reply.view('index', {
+        reply.view("index", {
           context: _this.getData(),
           reactClient: components,
           react: ReactDom.renderToString(App({components: components})),
-          script: ['/scripts/bundle'],
-          style: ['/styles/main.css']
+          script: ["/scripts/bundle"],
+          style: ["/styles/main.css"]
         });
       }
     };

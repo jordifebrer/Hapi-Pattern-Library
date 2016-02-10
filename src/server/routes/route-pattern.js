@@ -15,7 +15,7 @@ class PatternRoute {
     const _this = this;
     const name = encodeURIComponent(request.params.name);
 
-    this.emitter.on('change', data => {
+    this.emitter.on("change", data => {
       _this.data = data;
     });
 
@@ -30,10 +30,10 @@ class PatternRoute {
       path: this.path,
       handler: function(request, reply) {
 
-        reply.view('pattern', {
+        reply.view("pattern", {
           pattern: _this.getData(request),
           style: [],
-          script: []
+          script: ["/scripts/bundle"]
         });
       }
     };

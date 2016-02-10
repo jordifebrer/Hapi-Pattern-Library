@@ -15,7 +15,7 @@ class TemplateRoute {
     const _this = this;
     const name = encodeURIComponent(request.params.name);
 
-    this.emitter.on('change', data => {
+    this.emitter.on("change", data => {
       _this.data = data;
     });
 
@@ -29,10 +29,10 @@ class TemplateRoute {
       method: "GET",
       path: this.path,
       handler: function(request, reply) {
-        reply.view('template', {
+        reply.view("template", {
           template: _this.getData(request),
           style: [],
-          script: []
+          script: ["/scripts/bundle"]
         });
       }
     };
