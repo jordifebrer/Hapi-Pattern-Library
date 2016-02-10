@@ -7,6 +7,8 @@ if (document.getElementById("react-root")) {
     const ReactDOM = require("react-dom");
     const App = require("./flux");
 
+    require('./vendor/prism.js');
+
     ReactDOM.render(
         <App components={window.reactClient} />,
         document.getElementById("react-root")

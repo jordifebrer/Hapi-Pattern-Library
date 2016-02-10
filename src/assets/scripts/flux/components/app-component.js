@@ -43,11 +43,17 @@ class Component extends React.Component {
         });
     }
 
+    clickHandler() {
+      if(window) {
+        window.Prism.highlightAll();
+      }
+    }
+
     render() {
         const path = "/component/" + this.state.name;
 
         return (
-            <div className="pl-component">
+            <div className="pl-component" onClick={this.clickHandler}>
                 <h4 className="pl-component__title">
                     <a href={path} target="_blank">{this.state.name}</a>
                 </h4>

@@ -11,26 +11,32 @@ class ComponentTabs extends React.Component {
             tabs: [
                 {
                     name: "Docs",
+                    highlighting: false,
                     content: props.data.docs
                 },
                 {
                     name: "HTML",
+                    highlighting: "language-html",
                     content: props.data.compiledHtml
                 },
                 {
                     name: "Markup",
+                    highlighting: "language-html",
                     content: props.data.markup
                 },
                 {
                     name: "Context",
+                    highlighting: "language-javascript",
                     content: props.data.context
                 },
                 {
                     name: "Styles",
+                    highlighting: "language-css",
                     content: props.data.styles
                 },
                 {
                     name: "Scripts",
+                    highlighting: "language-javascript",
                     content: props.data.scripts
                 }
             ]
@@ -51,26 +57,32 @@ class ComponentTabs extends React.Component {
                     tabs: [
                         {
                             name: "Docs",
+                            highlighting: "language-markdown",
                             content: component.docs
                         },
                         {
                             name: "HTML",
+                            highlighting: "language-html",
                             content: component.compiledHtml
                         },
                         {
                             name: "Markup",
+                            highlighting: "language-html",
                             content: component.markup
                         },
                         {
                             name: "Context",
+                            highlighting: "language-javascript",
                             content: component.context
                         },
                         {
                             name: "Styles",
+                            highlighting: "language-css",
                             content: component.styles
                         },
                         {
                             name: "Scripts",
+                            highlighting: "language-javascript",
                             content: component.scripts
                         }
                     ]
@@ -97,7 +109,7 @@ class ComponentTabs extends React.Component {
 
                     return (
                         <TabPanel key={index}>
-                            <pre className="pl-component__pre"><code>{content}</code></pre>
+                            <pre className={item.highlighting}><code>{content}</code></pre>
                         </TabPanel>
                     );
                 })}
