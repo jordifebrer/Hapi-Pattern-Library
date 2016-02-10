@@ -1,5 +1,5 @@
-import React from 'react';
-import Component from './app-component';
+import React from "react";
+import Component from "./app-component";
 
 class ComponentList extends React.Component {
   constructor(props) {

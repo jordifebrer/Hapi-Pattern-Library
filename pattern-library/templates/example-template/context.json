@@ -1,5 +1,8 @@
 {
     "example-component": {
         "text": "I am a template page"
+    },
+    "example-component-2": {
+        "text": "I am a partial"
     }
 }

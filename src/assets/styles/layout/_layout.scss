@@ -1,0 +1,30 @@
+.pl {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__nav {
+        order: -1;
+    }
+
+    @media (min-width: 768px) {
+        &__main {
+            flex-direction: row;
+            flex: 1;
+        }
+
+        &__content {
+            flex: 1;
+        }
+
+        &__nav {
+            /* 12em is the width of the columns */
+            flex: 0 0 12em;
+        }
+    }
+}

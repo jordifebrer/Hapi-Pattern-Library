@@ -1,36 +1,36 @@
-{{#if components}}
-<ul class="sideNav__list">
-     <li>Components
-    {{#each components}}
-    <li>
-      <a href="/component/{{this.name}}">{{this.name}}</a>
-    </li>
-    {{/each}}
-    </li>
-</ul>
-{{/if}}
-
-{{#if templates}}
-<ul class="sideNav__list">
-     <li>Templates
-    {{#each templates}}
-    <li>
-      <a href="/template/{{this.name}}">{{this.name}}</a>
-    </li>
-    {{/each}}
-    </li>
-</ul>
-{{/if}}
-
-{{#if patterns}}
-
-<ul class="sideNav__list">
-    <li>Patterns
-    {{#each patterns}}
-    <li>
-      <a href="/pattern/{{this.name}}">{{this.name}}</a>
-    </li>
-    {{/each}}
-    </li>
-</ul>
-{{/if}}
+<nav class="sideNav">
+    {{#if components}}
+        <ul class="sideNav__list">
+            <li></li>
+            <li>Components
+                {{#each components}}
+                    <li>
+                        <a href="/component/{{this.name}}">{{this.name}}</a>
+                    </li>
+                {{/each}}
+            </li>
+        </ul>
+    {{/if}}
+    {{#if templates}}
+        <ul class="sideNav__list">
+            <li>Templates
+                {{#each templates}}
+                    <li>
+                        <a href="/template/{{this.name}}">{{this.name}}</a>
+                    </li>
+                {{/each}}
+            </li>
+        </ul>
+    {{/if}}
+    {{#if patterns}}
+        <ul class="sideNav__list">
+            <li>Patterns
+                {{#each patterns}}
+                    <li>
+                        <a href="/pattern/{{this.name}}">{{this.name}}</a>
+                    </li>
+                {{/each}}
+            </li>
+        </ul>
+    {{/if}}
+</nav>

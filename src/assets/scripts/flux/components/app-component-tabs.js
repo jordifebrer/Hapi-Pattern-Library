@@ -1,5 +1,5 @@
-import React from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs/lib/main';
+import React from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs/lib/main";
 
 class ComponentTabs extends React.Component {
     constructor(props) {
@@ -10,23 +10,23 @@ class ComponentTabs extends React.Component {
             name: props.componentName,
             tabs: [
                 {
-                    name: 'Docs',
+                    name: "Docs",
                     content: props.data.docs
                 },
                 {
-                    name: 'Markup',
+                    name: "Markup",
                     content: props.data.markup
                 },
                 {
-                    name: 'Context',
+                    name: "Context",
                     content: props.data.context
                 },
                 {
-                    name: 'Styles',
+                    name: "Styles",
                     content: props.data.styles
                 },
                 {
-                    name: 'Scripts',
+                    name: "Scripts",
                     content: props.data.scripts
                 }
             ]
@@ -37,7 +37,7 @@ class ComponentTabs extends React.Component {
         const _this = this;
         const socket = window.socket;
 
-        socket.on('update', data => {
+        socket.on("update", data => {
             if (data.file === this.state.name) {
                 const component = data.components[_this.state.id];
 
@@ -46,23 +46,23 @@ class ComponentTabs extends React.Component {
                     name: component.name,
                     tabs: [
                         {
-                            name: 'Docs',
+                            name: "Docs",
                             content: component.docs
                         },
                         {
-                            name: 'Markup',
+                            name: "Markup",
                             content: component.markup
                         },
                         {
-                            name: 'Context',
+                            name: "Context",
                             content: component.context
                         },
                         {
-                            name: 'Styles',
+                            name: "Styles",
                             content: component.styles
                         },
                         {
-                            name: 'Scripts',
+                            name: "Scripts",
                             content: component.scripts
                         }
                     ]
@@ -83,13 +83,13 @@ class ComponentTabs extends React.Component {
                 </TabList>
                 {this.state.tabs.map((item, index) => {
                     let content = item.content;
-                    if (typeof item.content === 'object') {
+                    if (typeof item.content === "object") {
                         content = JSON.stringify(item.content);
                     }
 
                     return (
                         <TabPanel key={index}>
-                            <pre><code>{content}</code></pre>
+                            <pre className="pl-component__pre"><code>{content}</code></pre>
                         </TabPanel>
                     );
                 })}

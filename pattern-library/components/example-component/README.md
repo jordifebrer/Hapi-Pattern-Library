@@ -2,4 +2,6 @@
 
 __Params__
 
-- text: String
+ - text: String
+ - example-component-2: Object
+ - - text: String

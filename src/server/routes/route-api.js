@@ -13,7 +13,7 @@ class APIRoute {
 
   getData() {
     const _this = this;
-    this.emitter.on('fileChange', data => {
+    this.emitter.on("fileChange", data => {
       _this.data = data;
     });
 
