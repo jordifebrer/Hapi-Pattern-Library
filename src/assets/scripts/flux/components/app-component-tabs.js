@@ -14,6 +14,10 @@ class ComponentTabs extends React.Component {
                     content: props.data.docs
                 },
                 {
+                    name: "HTML",
+                    content: props.data.compiledHtml
+                },
+                {
                     name: "Markup",
                     content: props.data.markup
                 },
@@ -48,6 +52,10 @@ class ComponentTabs extends React.Component {
                         {
                             name: "Docs",
                             content: component.docs
+                        },
+                        {
+                            name: "HTML",
+                            content: component.compiledHtml
                         },
                         {
                             name: "Markup",

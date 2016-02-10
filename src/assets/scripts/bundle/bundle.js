@@ -19847,6 +19847,7 @@
 	            name: props.data.name,
 	            data: {
 	                markup: props.data.markup,
+	                compiledHtml: props.data.compiledHtml,
 	                context: props.data.context,
 	                styles: props.data.styles,
 	                scripts: props.data.scripts,
@@ -19958,6 +19959,9 @@
 	                name: "Docs",
 	                content: props.data.docs
 	            }, {
+	                name: "HTML",
+	                content: props.data.compiledHtml
+	            }, {
 	                name: "Markup",
 	                content: props.data.markup
 	            }, {
@@ -19992,6 +19996,9 @@
 	                        tabs: [{
 	                            name: "Docs",
 	                            content: component.docs
+	                        }, {
+	                            name: "HTML",
+	                            content: component.compiledHtml
 	                        }, {
 	                            name: "Markup",
 	                            content: component.markup

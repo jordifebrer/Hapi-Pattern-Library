@@ -10,6 +10,7 @@ class Component extends React.Component {
             name: props.data.name,
             data: {
                 markup: props.data.markup,
+                compiledHtml: props.data.compiledHtml,
                 context: props.data.context,
                 styles: props.data.styles,
                 scripts: props.data.scripts,
