@@ -19961,6 +19961,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	function createMarkup(html) {
+	    return { __html: html };
+	}
+
 	var ComponentTabs = function (_React$Component) {
 	    _inherits(ComponentTabs, _React$Component);
 
@@ -20042,6 +20046,8 @@
 	                            content: component.scripts
 	                        }]
 	                    });
+
+	                    window.Prism.highlightAll();
 	                }
 	            });
 	        }
@@ -20068,12 +20074,7 @@
 	                        content = JSON.stringify(item.content);
 	                    }
 
-	                    function createMarkup(html) {
-	                        return { __html: html };
-	                    };
-
 	                    if (item.name === "Docs") {
-	                        console.log(item.content);
 	                        return _react2.default.createElement(
 	                            _main.TabPanel,
 	                            { key: index },

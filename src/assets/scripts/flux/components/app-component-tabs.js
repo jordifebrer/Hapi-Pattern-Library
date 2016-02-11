@@ -1,6 +1,10 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs/lib/main";
 
+function createMarkup(html) {
+    return {__html: html};
+}
+
 class ComponentTabs extends React.Component {
     constructor(props) {
         super(props);
@@ -87,6 +91,8 @@ class ComponentTabs extends React.Component {
                         }
                     ]
                 });
+
+                window.Prism.highlightAll();
             }
         });
     }
@@ -107,13 +113,10 @@ class ComponentTabs extends React.Component {
                         content = JSON.stringify(item.content);
                     }
 
-                    function createMarkup(html) { return {__html: html}; };
-
                     if (item.name === "Docs") {
-                        console.log(item.content)
                         return (
                             <TabPanel key={index}>
-                                <div dangerouslySetInnerHTML={createMarkup(item.content)} />
+                                <div dangerouslySetInnerHTML={createMarkup(item.content)}/>
                             </TabPanel>
                         );
                     } else {

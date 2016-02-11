@@ -86,8 +86,6 @@ class ComponentConfig {
             currentComponent.name = component;
             currentComponent.docs = Marked(_this.catcher(files.docs, false));
 
-            console.log(currentComponent.docs);
-
             currentComponent.markup = _this.catcher(files.html, false);
             currentComponent.styles = _this.catcher(files.styles, false);
             currentComponent.scripts = _this.catcher(files.scripts, false);
