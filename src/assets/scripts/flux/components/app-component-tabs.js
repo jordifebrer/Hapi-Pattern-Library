@@ -107,11 +107,22 @@ class ComponentTabs extends React.Component {
                         content = JSON.stringify(item.content);
                     }
 
-                    return (
-                        <TabPanel key={index}>
-                            <pre className={item.highlighting}><code>{content}</code></pre>
-                        </TabPanel>
-                    );
+                    function createMarkup(html) { return {__html: html}; };
+
+                    if (item.name === "Docs") {
+                        console.log(item.content)
+                        return (
+                            <TabPanel key={index}>
+                                <div dangerouslySetInnerHTML={createMarkup(item.content)} />
+                            </TabPanel>
+                        );
+                    } else {
+                        return (
+                            <TabPanel key={index}>
+                                <pre className={item.highlighting}><code>{content}</code></pre>
+                            </TabPanel>
+                        );
+                    }
                 })}
             </Tabs>
         );

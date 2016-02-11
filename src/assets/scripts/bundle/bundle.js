@@ -19893,7 +19893,15 @@
 	        key: "clickHandler",
 	        value: function clickHandler() {
 	            if (window) {
-	                window.Prism.highlightAll();
+	                /*
+	                    Prism doesn't highlight the code unless it is visible.
+	                    This means that code inside tabs is not highlighted.
+	                    To get round this I have added a delay before calling highlightAll(),
+	                    this is something that could do with further attention.
+	                 */
+	                setTimeout(function () {
+	                    return window.Prism.highlightAll();
+	                }, 100);
 	            }
 	        }
 	    }, {
@@ -20060,19 +20068,32 @@
 	                        content = JSON.stringify(item.content);
 	                    }
 
-	                    return _react2.default.createElement(
-	                        _main.TabPanel,
-	                        { key: index },
-	                        _react2.default.createElement(
-	                            "pre",
-	                            { className: item.highlighting },
+	                    function createMarkup(html) {
+	                        return { __html: html };
+	                    };
+
+	                    if (item.name === "Docs") {
+	                        console.log(item.content);
+	                        return _react2.default.createElement(
+	                            _main.TabPanel,
+	                            { key: index },
+	                            _react2.default.createElement("div", { dangerouslySetInnerHTML: createMarkup(item.content) })
+	                        );
+	                    } else {
+	                        return _react2.default.createElement(
+	                            _main.TabPanel,
+	                            { key: index },
 	                            _react2.default.createElement(
-	                                "code",
-	                                null,
-	                                content
+	                                "pre",
+	                                { className: item.highlighting },
+	                                _react2.default.createElement(
+	                                    "code",
+	                                    null,
+	                                    content
+	                                )
 	                            )
-	                        )
-	                    );
+	                        );
+	                    }
 	                })
 	            );
 	        }

@@ -44,8 +44,6 @@ class TemplateConfig {
     compileHandlebars(src, context) {
         let template;
 
-        src = src;
-        context = context;
         template = Handlebars.compile(src);
         return template(context);
     }

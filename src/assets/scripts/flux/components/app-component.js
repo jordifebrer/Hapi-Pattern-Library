@@ -44,9 +44,15 @@ class Component extends React.Component {
     }
 
     clickHandler() {
-      if(window) {
-        window.Prism.highlightAll();
-      }
+        if (window) {
+            /*
+                Prism doesn't highlight the code unless it is visible.
+                This means that code inside tabs is not highlighted.
+                To get round this I have added a delay before calling highlightAll(),
+                this is something that could do with further attention.
+             */
+            setTimeout(() => window.Prism.highlightAll(), 100);
+        }
     }
 
     render() {
