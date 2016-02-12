@@ -16,5 +16,4 @@ class Main {
   }
 }
 
-module.exports = _ =>
-  new Main(_);
+module.exports = _ => new Main(_);

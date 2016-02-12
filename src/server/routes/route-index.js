@@ -8,53 +8,58 @@ const ReactComponent = require("../../assets/scripts/flux");
 const App = React.createFactory(ReactComponent);
 
 class IndexRoute {
-  constructor(server, data, emitter) {
-    this.data = data;
-    this.server = server;
-    this.emitter = emitter;
+    constructor(server, data, emitter) {
+        this.data = data;
+        this.server = server;
+        this.emitter = emitter;
 
-    this.path = "/";
+        this.path = "/";
 
-    this.init();
-  }
+        this.init();
+    }
 
-  getData() {
-    const _this = this;
-    this.emitter.on("change", data => {
-      _this.data = data;
-    });
+    getData() {
+        const _this = this;
 
-    return this.data;
-  }
-
-  get() {
-    const _this = this;
-    const components = this.getData().components;
-
-    return {
-      method: "GET",
-      path: this.path,
-      handler: function (request, reply) {
-        reply.view("index", {
-          context: _this.getData(),
-          reactClient: components,
-          react: ReactDom.renderToString(App({components: components})),
-          script: ["/scripts/bundle"],
-          style: ["/styles/main.css"]
+        this.emitter.on("change", data => {
+            _this.data.components = data.components;
+            _this.data.templates = data.templates;
+            _this.data.patterns = data.patterns;
         });
-      }
-    };
-  }
 
-  init() {
-    this.server.route(
-      [
-        this.get()
-      ]
-    );
-  }
+        return this.data;
+    }
+
+    get() {
+        const _this = this;
+        const components = this.getData().components;
+
+        return {
+            method: "GET",
+            path: this.path,
+            handler: function(request, reply) {
+                reply.view("index", {
+                    context: _this.getData(),
+                    reactClient: components,
+                    react: ReactDom.renderToString(App({
+                        components: components
+                    })),
+                    script: ["/scripts/bundle"],
+                    style: ["/styles/main.css"]
+                });
+            }
+        };
+    }
+
+    init() {
+        this.server.route(
+            [
+                this.get()
+            ]
+        );
+    }
 }
 
 
 module.exports = (server, data, emitter) =>
-  new IndexRoute(server, data, emitter);
+    new IndexRoute(server, data, emitter);

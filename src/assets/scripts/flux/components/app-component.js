@@ -59,9 +59,9 @@ class Component extends React.Component {
         const path = "/component/" + this.state.name;
 
         return (
-            <div className="pl-component" onClick={this.clickHandler}>
+            <div className="pl-component" onClick={this.clickHandler} id={this.state.name}>
                 <h4 className="pl-component__title">
-                    <a href={path} target="_blank">{this.state.name}</a>
+                    <a className="pl-component__title-link" href={path} target="_blank">{this.state.name}</a>
                 </h4>
                 <iframe className="pl-component__iframe" src={path}
                         name={this.state.name}></iframe>

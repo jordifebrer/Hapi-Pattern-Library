@@ -116,13 +116,13 @@ class ComponentTabs extends React.Component {
                     if (item.name === "Docs") {
                         return (
                             <TabPanel key={index}>
-                                <div dangerouslySetInnerHTML={createMarkup(item.content)}/>
+                                <div className="pl-component__docs" dangerouslySetInnerHTML={createMarkup(item.content)}/>
                             </TabPanel>
                         );
                     } else {
                         return (
                             <TabPanel key={index}>
-                                <pre className={item.highlighting}><code>{content}</code></pre>
+                                <pre className={item.highlighting}><code className="pl-component__code">{content}</code></pre>
                             </TabPanel>
                         );
                     }

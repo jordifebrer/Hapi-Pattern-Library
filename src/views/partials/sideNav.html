@@ -1,36 +1,32 @@
-<nav class="sideNav">
+<nav class="pl-sideNav">
     {{#if components}}
-        <ul class="sideNav__list">
-            <li></li>
-            <li>Components
-                {{#each components}}
-                    <li>
-                        <a href="/component/{{this.name}}">{{this.name}}</a>
-                    </li>
-                {{/each}}
-            </li>
-        </ul>
-    {{/if}}
-    {{#if templates}}
-        <ul class="sideNav__list">
-            <li>Templates
-                {{#each templates}}
-                    <li>
-                        <a href="/template/{{this.name}}">{{this.name}}</a>
-                    </li>
-                {{/each}}
-            </li>
+        <h2 class="pl-sideNav__header">Components</h2>
+        <ul class="pl-sideNav__list">
+            {{#each components}}
+                <li class="pl-sideNav__list-item">
+                    <a class="pl-sideNav__link" href="#{{this.name}}">{{this.name}}</a>
+                </li>
+            {{/each}}
         </ul>
     {{/if}}
     {{#if patterns}}
-        <ul class="sideNav__list">
-            <li>Patterns
-                {{#each patterns}}
-                    <li>
-                        <a href="/pattern/{{this.name}}">{{this.name}}</a>
-                    </li>
-                {{/each}}
-            </li>
+        <h2 class="pl-sideNav__header">Patterns</h2>
+        <ul class="pl-sideNav__list">
+            {{#each patterns}}
+                <li class="pl-sideNav__list-item">
+                    <a class="pl-sideNav__link" href="/pattern/{{this.name}}" target="_blank">{{this.name}}</a>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
+    {{#if templates}}
+        <h2 class="pl-sideNav__header">Templates</h2>
+        <ul class="pl-sideNav__list">
+            {{#each templates}}
+                <li class="pl-sideNav__list-item">
+                    <a class="pl-sideNav__link" href="/template/{{this.name}}" target="_blank">{{this.name}}</a>
+                </li>
+            {{/each}}
         </ul>
     {{/if}}
 </nav>

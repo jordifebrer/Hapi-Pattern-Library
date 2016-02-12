@@ -1,16 +1,15 @@
 <div class="pl">
-    <header class="pl-header">
-        <h2 class="pl-header__brand">{{context.app.name}}</h2>
-        <a class="pl-header__link" href="/api" target="_blank">Data: {{context.app.version}}</a>
-    </header>
-
     <main class="pl__main">
         <div class="pl__nav">
             {{> sideNav context}}
         </div>
-
-        <div id="react-root" class="pl__content">
-            {{{react}}}
+        <div class="pl__content">
+            <section class="pl-desc">
+                <h1 class="pl-desc__header">{{context.app.name}} v{{context.app.version}}</h1>
+                <p class="pl-desc__content">{{context.app.description}}</p>
+                <a class="pl-desc__link"href="/api" target="_blank">View Data</a>
+            </section>
+            <div id="react-root">{{{react}}}</div>
         </div>
     </main>
 </div>

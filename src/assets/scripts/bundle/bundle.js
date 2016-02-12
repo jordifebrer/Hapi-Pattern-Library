@@ -19911,13 +19911,13 @@
 
 	            return _react2.default.createElement(
 	                "div",
-	                { className: "pl-component", onClick: this.clickHandler },
+	                { className: "pl-component", onClick: this.clickHandler, id: this.state.name },
 	                _react2.default.createElement(
 	                    "h4",
 	                    { className: "pl-component__title" },
 	                    _react2.default.createElement(
 	                        "a",
-	                        { href: path, target: "_blank" },
+	                        { className: "pl-component__title-link", href: path, target: "_blank" },
 	                        this.state.name
 	                    )
 	                ),
@@ -20078,7 +20078,7 @@
 	                        return _react2.default.createElement(
 	                            _main.TabPanel,
 	                            { key: index },
-	                            _react2.default.createElement("div", { dangerouslySetInnerHTML: createMarkup(item.content) })
+	                            _react2.default.createElement("div", { className: "pl-component__docs", dangerouslySetInnerHTML: createMarkup(item.content) })
 	                        );
 	                    } else {
 	                        return _react2.default.createElement(
@@ -20089,7 +20089,7 @@
 	                                { className: item.highlighting },
 	                                _react2.default.createElement(
 	                                    "code",
-	                                    null,
+	                                    { className: "pl-component__code" },
 	                                    content
 	                                )
 	                            )

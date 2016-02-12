@@ -1,7 +1,138 @@
 @import 'vendor/vendor';
+@import 'vars/vars';
 
-@import 'base/base';
-@import 'layout/layout';
-@import 'module/module';
-@import 'state/state';
-@import 'theme/theme';
+/**************************************************
+*	PL
+***************************************************/
+
+.pl {
+    color: $colors__text;
+    display: flex;
+    flex-direction: column;
+    &__main {
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-direction: row;
+        flex: 1;
+    }
+    &__content {
+        flex: 1;
+    }
+    &__nav {
+        /* 12em is the width of the columns */
+        flex: 0 0 12em;
+    }
+}
+
+
+/**************************************************
+*	SideNav
+***************************************************/
+
+.pl-sideNav {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    &__header {
+        color: $colors__text--muted;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    &__list {
+        list-style: none;
+        padding: 0;
+    }
+    &__list-item {}
+    &__link {
+        color: $colors__text--muted;
+        font-size: 12px;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+/**************************************************
+*	Header
+***************************************************/
+
+.pl-header {
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    flex-direction: column;
+    &__brand {}
+    &__links {}
+    &__link {}
+    @media (min-width: 768px) {
+        align-items: center;
+        flex-direction: row;
+        flex: 1;
+    }
+}
+
+
+/**************************************************
+*	Description
+***************************************************/
+
+.pl-desc {
+    margin: 0 0 60px 0;
+    &__header {}
+    &__link {}
+    &__content {}
+}
+
+
+/**************************************************
+*	Components
+***************************************************/
+
+.pl-component {
+    margin: 5rem 0;
+    &__docs {
+        background: #eee;
+        padding: 1rem;
+    }
+    &__title {
+        margin: 20px 0 0 0;
+        text-transform: uppercase;
+    }
+    &__title-link {
+        color: $colors__text;
+        text-decoration: none;
+        &:hover:before {
+            color: $colors__text;
+            content: "/";
+        }
+    }
+    &__iframe {
+        border: 0;
+        border-top: 1px solid $colors__text--muted;
+        width: 100%;
+    }
+}
+
+
+/* Stops a jump when prism kicks in */
+
+pre,
+code {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+}

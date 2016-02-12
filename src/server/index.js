@@ -23,7 +23,7 @@ class Server {
     }
 
     data() {
-        const AppInfo = require(this.root + "/package.json");
+        const AppInfo = require(this.root + "/pattern-library/pl.config")(this.root);
         const config = this.config();
         const components = config.patternLibrary.components;
         const templates = config.patternLibrary.templates;
@@ -37,7 +37,7 @@ class Server {
                 name: AppInfo.name,
                 version: AppInfo.version,
                 description: AppInfo.description,
-                author: AppInfo.author
+                authors: AppInfo.authors
             }
         };
     }
