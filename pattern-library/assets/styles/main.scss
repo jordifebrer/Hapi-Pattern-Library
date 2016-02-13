@@ -1,6 +1,8 @@
 // Base and global imports here
+@import 'vendor/bootstrap';
 
 // Import component stylesheets here
 
-@import './example-component/styles/main';
-@import './example-component-2/styles/main';
+@import './Jumbotron/styles/main';
+@import './Page-Header/styles/main';
+@import './Progress-Bar/styles/main';

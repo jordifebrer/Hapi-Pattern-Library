@@ -1,6 +1,9 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs/lib/main";
 
+const beautify = require('js-beautify').js_beautify;
+
+
 function createMarkup(html) {
     return {__html: html};
 }
@@ -110,7 +113,7 @@ class ComponentTabs extends React.Component {
                 {this.state.tabs.map((item, index) => {
                     let content = item.content;
                     if (typeof item.content === "object") {
-                        content = JSON.stringify(item.content);
+                        content = beautify(JSON.stringify(item.content), { indent_size: 2 });
                     }
 
                     return (

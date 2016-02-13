@@ -50,21 +50,18 @@
 
 	// Add path to component scripts
 	__webpack_require__(1);
-	__webpack_require__(2);
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
+	var jumbotron = document.querySelector('.jumbotron');
 
-	"use strict";
-
-	console.log("example component scripts");
+	jumbotron.addEventListener('click', function () {
+		window.alert('BOOM!');
+	});
 
 /***/ }
 /******/ ]);

@@ -31,9 +31,6 @@ pre[class*="language-"] {
 /* Code blocks */
 pre, pre[class*="language-"] {
 	position: relative;
-	border-left: 5px solid $colors__accent;
-	border-bottom: 5px solid $colors__accent;
-	border-right: 5px solid $colors__accent;
 	background-color: #fdfdfd;
 	background-image: -webkit-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
 	background-image: -moz-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);

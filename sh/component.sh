@@ -10,7 +10,7 @@ fi
 
 eval "cd ./pattern-library/components";
 eval "mkdir ${component} && cd ${component}";
-eval "touch index.html docs.md context.json";
+eval "touch index.html README.md context.json";
 eval "printf '{}' >> context.json";
 eval "mkdir scripts styles";
 eval "cd scripts && touch main.js && cd ..";

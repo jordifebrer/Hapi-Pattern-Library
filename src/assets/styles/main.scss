@@ -1,6 +1,17 @@
 @import 'vars/vars';
-
 @import 'vendor/vendor';
+
+pre, code {
+ white-space: pre-wrap !important;       /* css-3 */
+ white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap !important;      /* Opera 4-6 */
+ white-space: -o-pre-wrap !important;    /* Opera 7 */
+ word-wrap: break-word !important;       /* Internet Explorer 5.5+ */
+}
+body {
+    background: $colors__bg;
+}
+
 
 /**************************************************
 *   PL
@@ -52,7 +63,6 @@
         color: $colors__text;
         font-size: 14px;
         font-family: $font__pt;
-
         text-decoration: none;
         &:hover {
             text-decoration: underline;
@@ -99,7 +109,12 @@
 ***************************************************/
 
 .pl-component {
-    margin: 5rem 0;
+    background: white;
+    margin: 2rem 0;
+    padding: 1rem;
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
     &__docs {
         background: #eee;
         padding: 1rem;
@@ -121,6 +136,7 @@
         }
     }
     &__iframe {
+        box-sizing: border-box;
         border: 0;
         width: 100%;
     }
@@ -136,7 +152,6 @@ body {
     font-family: $font__pt;
 }
 
-
 pre[class*="language-"] {
     margin: 0 !important;
 }
@@ -149,7 +164,7 @@ pre[class*="language-"] {
 .ReactTabs__Tab {
     border-radius: 0 !important;
     border: none !important;
-        color: $colors__text--muted;
+    color: $colors__text--muted;
     font-family: $font__alfa !important;
     &--selected {
         border-bottom: 5px solid #4285f4 !important;

@@ -1,0 +1,21 @@
+{
+    "title": "An example table",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "head": ["First Name", "Last Name", "Email"],
+    "row": [{
+        "theme": "success",
+        "first": "Brian",
+        "second": "Douglas",
+        "third": "foo@bar.com"
+    }, {
+        "theme": "danger",
+        "first": "Brian",
+        "second": "Douglas",
+        "third": "foo@bar.com"
+    }, {
+        "theme": "info",
+        "first": "Brian",
+        "second": "Douglas",
+        "third": "foo@bar.com"
+    }]
+}
