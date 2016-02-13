@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">
     var socket = io();
     </script>
-
+    <style>
+    @font-face {
+        font-family: AlfaSlab;
+        src: url("/fonts/alfa");
+    }
+    
+    @font-face {
+        font-family: PTSans;
+        src: url("/fonts/pt-sans");
+    }
+    </style>
     {{#each style}}
-      <link rel="stylesheet" href="{{this}}" media="screen" title="no title" charset="utf-8">
-    {{/each}}
-  </head>
+    <link rel="stylesheet" href="{{this}}" type="text/css"> {{/each}}
+</head>
 
-  <body>
-    {{{content}}}
-
-    {{#each script}}
-      <script src="{{this}}"></script>
+<body>
+    {{{content}}} {{#each script}}
+    <script src="{{this}}"></script>
     {{/each}}
-  </body>
+</body>
 
 </html>

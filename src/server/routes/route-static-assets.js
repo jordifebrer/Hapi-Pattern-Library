@@ -22,6 +22,12 @@ class StaticRoute {
         }, {
             src: "/dist/main.css",
             url: "/app/styles/main"
+        }, {
+            src: "/src/assets/fonts/Alfa_Slab_One/AlfaSlabOne-Regular.ttf",
+            url: "/fonts/alfa"
+        }, {
+            src: "/src/assets/fonts/PT_Sans/PT_Sans-Web-Regular.ttf",
+            url: "/fonts/pt-sans"
         }];
 
         const getFile = file => {

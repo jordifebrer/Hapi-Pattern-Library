@@ -15,7 +15,7 @@ class ComponentTabs extends React.Component {
             tabs: [
                 {
                     name: "Docs",
-                    highlighting: false,
+                    highlighting: "language-markdown",
                     content: props.data.docs
                 },
                 {
@@ -25,7 +25,7 @@ class ComponentTabs extends React.Component {
                 },
                 {
                     name: "Markup",
-                    highlighting: "language-html",
+                    highlighting: "language-handlebars",
                     content: props.data.markup
                 },
                 {
@@ -71,7 +71,7 @@ class ComponentTabs extends React.Component {
                         },
                         {
                             name: "Markup",
-                            highlighting: "language-html",
+                            highlighting: "language-handlebars",
                             content: component.markup
                         },
                         {
@@ -113,19 +113,11 @@ class ComponentTabs extends React.Component {
                         content = JSON.stringify(item.content);
                     }
 
-                    if (item.name === "Docs") {
-                        return (
-                            <TabPanel key={index}>
-                                <div className="pl-component__docs" dangerouslySetInnerHTML={createMarkup(item.content)}/>
-                            </TabPanel>
-                        );
-                    } else {
-                        return (
-                            <TabPanel key={index}>
-                                <pre className={item.highlighting}><code className="pl-component__code">{content}</code></pre>
-                            </TabPanel>
-                        );
-                    }
+                    return (
+                        <TabPanel key={index}>
+                            <pre className={item.highlighting}><code className="pl-component__code">{content}</code></pre>
+                        </TabPanel>
+                    );
                 })}
             </Tabs>
         );

@@ -1,8 +1,9 @@
-@import 'vendor/vendor';
 @import 'vars/vars';
 
+@import 'vendor/vendor';
+
 /**************************************************
-*	PL
+*   PL
 ***************************************************/
 
 .pl {
@@ -27,7 +28,7 @@
 
 
 /**************************************************
-*	SideNav
+*   SideNav
 ***************************************************/
 
 .pl-sideNav {
@@ -35,9 +36,12 @@
     top: 0;
     left: 1rem;
     &__header {
-        color: $colors__text--muted;
+        color: $colors__base;
+        font-family: $font__alfa;
+        letter-spacing: 2px;
+        margin: 20px 0 0 0;
+        text-transform: uppercase;
         font-size: 18px;
-        font-weight: bold;
     }
     &__list {
         list-style: none;
@@ -45,8 +49,10 @@
     }
     &__list-item {}
     &__link {
-        color: $colors__text--muted;
-        font-size: 12px;
+        color: $colors__text;
+        font-size: 14px;
+        font-family: $font__pt;
+
         text-decoration: none;
         &:hover {
             text-decoration: underline;
@@ -56,39 +62,40 @@
 
 
 /**************************************************
-*	Header
-***************************************************/
-
-.pl-header {
-    display: flex;
-    align-items: left;
-    justify-content: space-between;
-    flex-direction: column;
-    &__brand {}
-    &__links {}
-    &__link {}
-    @media (min-width: 768px) {
-        align-items: center;
-        flex-direction: row;
-        flex: 1;
-    }
-}
-
-
-/**************************************************
-*	Description
+*   Description
 ***************************************************/
 
 .pl-desc {
     margin: 0 0 60px 0;
-    &__header {}
-    &__link {}
+    &__divider {
+        background: $colors__accent;
+        display: block;
+        width: 100%;
+        height: 5px;
+    }
+    &__header {
+        color: $colors__base;
+        font-family: $font__alfa;
+        font-size: 28px;
+        letter-spacing: 2px;
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+    }
+    &__link {
+        background: $colors__accent;
+        color: $colors__text--white;
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.5rem;
+        border-radius: 3px;
+        margin: 0.5rem 0 0;
+    }
     &__content {}
 }
 
 
 /**************************************************
-*	Components
+*   Components
 ***************************************************/
 
 .pl-component {
@@ -98,41 +105,54 @@
         padding: 1rem;
     }
     &__title {
+        font-family: $font__alfa;
+        font-size: 28px;
+        letter-spacing: 2px;
         margin: 20px 0 0 0;
         text-transform: uppercase;
     }
     &__title-link {
-        color: $colors__text;
+        color: $colors__base;
         text-decoration: none;
-        &:hover:before {
+        &:hover:after {
             color: $colors__text;
-            content: "/";
+            content: "/view";
+            font-size: 14px;
         }
     }
     &__iframe {
         border: 0;
-        border-top: 1px solid $colors__text--muted;
         width: 100%;
+    }
+    &__underline {
+        background: $colors__accent;
+        display: block;
+        width: 100%;
+        height: 5px;
     }
 }
 
+body {
+    font-family: $font__pt;
+}
 
-/* Stops a jump when prism kicks in */
 
-pre,
-code {
-    color: black;
-    background: none;
-    text-shadow: 0 1px white;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    direction: ltr;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
+pre[class*="language-"] {
+    margin: 0 !important;
+}
+
+.ReactTabs__TabList {
+    border-bottom: 5px solid #4285f4 !important;
+    margin: 0 !important;
+}
+
+.ReactTabs__Tab {
+    border-radius: 0 !important;
+    border: none !important;
+        color: $colors__text--muted;
+    font-family: $font__alfa !important;
+    &--selected {
+        border-bottom: 5px solid #4285f4 !important;
+        color: $colors__text;
+    }
 }

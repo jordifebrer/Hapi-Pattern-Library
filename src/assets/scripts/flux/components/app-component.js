@@ -63,6 +63,7 @@ class Component extends React.Component {
                 <h4 className="pl-component__title">
                     <a className="pl-component__title-link" href={path} target="_blank">{this.state.name}</a>
                 </h4>
+                <div className="pl-component__underline"></div>
                 <iframe className="pl-component__iframe" src={path}
                         name={this.state.name}></iframe>
                 <ComponentTabs data={this.state.data}

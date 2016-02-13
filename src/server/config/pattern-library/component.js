@@ -4,19 +4,6 @@ const Path = require("path");
 const fs = require("fs");
 const Handlebars = require("handlebars");
 
-const Marked = require("marked");
-
-Marked.setOptions({
-    renderer: new Marked.Renderer(),
-    gfm: true,
-    tables: true,
-    breaks: false,
-    pedantic: false,
-    sanitize: true,
-    smartLists: true,
-    smartypants: false
-});
-
 class ComponentConfig {
     constructor(root) {
         this.root = root;
@@ -84,7 +71,7 @@ class ComponentConfig {
 
             currentComponent.id = index;
             currentComponent.name = component;
-            currentComponent.docs = Marked(_this.catcher(files.docs, false));
+            currentComponent.docs = _this.catcher(files.docs, false);
 
             currentComponent.markup = _this.catcher(files.html, false);
             currentComponent.styles = _this.catcher(files.styles, false);

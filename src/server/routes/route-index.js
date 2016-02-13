@@ -45,7 +45,9 @@ class IndexRoute {
                         components: components
                     })),
                     script: ["/scripts/bundle"],
-                    style: ["/styles/main.css"]
+                    style: [
+                        "/styles/main.css"
+                    ]
                 });
             }
         };
