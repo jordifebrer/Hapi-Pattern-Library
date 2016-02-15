@@ -1,1 +1,42 @@
-{}
+{
+  "header": {
+    "heading": "About us page",
+    "subtext": "Pattern libraries are cool"
+  },
+  "jumbotron": {
+    "heading": "EdPug is Awesome",
+    "text": "I should go each month",
+    "link": {
+      "text": "visit the site"
+    }
+  },
+  "table": {
+    "title": "An example table",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "head": [
+      "First Name",
+      "Last Name",
+      "Email"
+    ],
+    "row": [
+      {
+        "theme": "success",
+        "first": "Brian",
+        "second": "Douglas",
+        "third": "foo@bar.com"
+      },
+      {
+        "theme": "danger",
+        "first": "Brian",
+        "second": "Douglas",
+        "third": "foo@bar.com"
+      },
+      {
+        "theme": "info",
+        "first": "Brian",
+        "second": "Douglas",
+        "third": "foo@bar.com"
+      }
+    ]
+  }
+}
