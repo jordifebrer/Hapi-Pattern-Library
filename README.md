@@ -5,9 +5,11 @@ This Pattern Library also acts as a task manager. When a change is made to a `Co
 
 ## Getting started
 
-You will need to have a recent version of `node` installed
+1. Clone this repo.
 
-If `node` is installed run the following commands to get started:
+2. Make sure that you have a recent version of `Node.js` installed (>= 3). To install Node you can go to their website [Node.js](http://nodejs.org/downloads/).
+
+3. If Node is installed cd into the root of the repo and run the following commands to get started:
 
 ```
     $ npm install
